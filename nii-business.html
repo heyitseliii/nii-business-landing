@@ -78,20 +78,20 @@ ul,ol{list-style:none}
 /* ══════════════════════════════════════
    NAV
 ══════════════════════════════════════ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--s200);transition:box-shadow .3s}
-.nav.up{box-shadow:0 4px 24px rgba(0,0,0,.07)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;background:#74DAD3;border-bottom:1px solid rgba(255,255,255,.2);transition:box-shadow .3s}
+.nav.up{box-shadow:0 4px 24px rgba(0,0,0,.12)}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:10px}
-.logo-mark{width:38px;height:38px;background:var(--p);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:900;color:#fff;box-shadow:0 4px 14px var(--p-glow)}
-.logo-name{font-size:16px;font-weight:800;color:var(--s900);letter-spacing:-.01em}
-.logo-sub{font-size:10px;color:var(--s400);font-weight:500;letter-spacing:.07em;text-transform:uppercase;margin-top:1px}
-.logo-sep{width:1px;height:18px;background:var(--s200);margin:0 8px}
-.logo-biz{font-size:11px;font-weight:700;color:var(--p-deep);letter-spacing:.12em;text-transform:uppercase}
+.logo-mark{width:38px;height:38px;background:rgba(255,255,255,.28);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:900;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.logo-name{font-size:16px;font-weight:800;color:#fff;letter-spacing:-.01em}
+.logo-sub{font-size:10px;color:rgba(255,255,255,.72);font-weight:500;letter-spacing:.07em;text-transform:uppercase;margin-top:1px}
+.logo-sep{width:1px;height:18px;background:rgba(255,255,255,.3);margin:0 8px}
+.logo-biz{font-size:11px;font-weight:700;color:#fff;letter-spacing:.12em;text-transform:uppercase}
 .nav-links{display:flex;align-items:center;gap:4px}
-.nav-a{font-size:14px;font-weight:600;color:var(--s600);padding:7px 14px;border-radius:8px;transition:color .2s,background .2s}
-.nav-a:hover{color:var(--s900);background:var(--s100)}
-.nav-cta{background:var(--p);color:#fff;padding:10px 24px;border-radius:100px;font-size:14px;font-weight:700;border:none;margin-left:8px;box-shadow:0 4px 16px var(--p-glow);transition:all .2s}
-.nav-cta:hover{background:var(--p-dark);transform:translateY(-2px);box-shadow:0 8px 24px var(--p-glow2)}
+.nav-a{font-size:14px;font-weight:600;color:rgba(255,255,255,.88);padding:7px 14px;border-radius:8px;transition:color .2s,background .2s}
+.nav-a:hover{color:#fff;background:rgba(255,255,255,.18)}
+.nav-cta{background:#fff;color:var(--p-deep);padding:10px 24px;border-radius:100px;font-size:14px;font-weight:700;border:none;margin-left:8px;box-shadow:0 2px 12px rgba(0,0,0,.12);transition:all .2s}
+.nav-cta:hover{background:rgba(255,255,255,.92);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
 
 /* ══════════════════════════════════════
    HERO  ①
@@ -190,12 +190,14 @@ ul,ol{list-style:none}
 /* ══════════════════════════════════════
    PROCESS  ④
 ══════════════════════════════════════ */
-.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:52px;position:relative}
-.process-steps::before{content:'';position:absolute;top:28px;left:calc(12.5% + 4px);right:calc(12.5% + 4px);height:2px;background:linear-gradient(90deg,var(--p),var(--p-deep));border-radius:2px;z-index:0}
-.proc{text-align:center;padding:0 16px;position:relative;z-index:1}
-.proc-bubble{width:56px;height:56px;border-radius:50%;background:var(--p);color:#fff;font-size:22px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 4px 20px var(--p-glow);border:4px solid var(--white);letter-spacing:-.01em}
-.proc-title{font-size:15px;font-weight:800;color:var(--s900);margin-bottom:7px;letter-spacing:-.01em}
-.proc-desc{font-size:13px;color:var(--s500);line-height:1.65;font-weight:400}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px;position:relative}
+.process-steps::before{content:'';position:absolute;top:calc(28px + 44px + 12px + 28px);left:calc(12.5% - 0px);right:calc(12.5% - 0px);height:2px;background:linear-gradient(90deg,var(--p),var(--p-deep));border-radius:2px;z-index:0;pointer-events:none}
+.proc{text-align:center;padding:28px 20px 24px;position:relative;z-index:1;background:#fff;border-radius:var(--rl);border:1.5px solid var(--s200);box-shadow:var(--sh);transition:border-color .3s,box-shadow .3s,transform .3s cubic-bezier(.22,1,.36,1)}
+.proc:hover{border-color:var(--p);box-shadow:var(--shg);transform:translateY(-6px)}
+.proc-icon{font-size:36px;display:block;margin:0 auto 12px;line-height:1}
+.proc-bubble{width:56px;height:56px;border-radius:50%;background:var(--p);color:#fff;font-size:22px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 4px 20px var(--p-glow);border:4px solid var(--white);letter-spacing:-.01em}
+.proc-title{font-size:15px;font-weight:800;color:var(--s900);margin-bottom:8px;letter-spacing:-.01em}
+.proc-desc{font-size:13px;color:var(--s500);line-height:1.68;font-weight:400}
 
 /* ══════════════════════════════════════
    CONTACT FORM  ⑤
@@ -238,10 +240,13 @@ ul,ol{list-style:none}
 
 /* checkboxes */
 .fcheck-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.fcheck-item{display:flex;align-items:flex-start;gap:9px;padding:12px 14px;border-radius:10px;border:1.5px solid var(--s200);cursor:pointer;transition:border-color .2s,background .2s;font-size:13px;font-weight:500;color:var(--s700);line-height:1.45}
+.fcheck-item{display:flex;align-items:flex-start;gap:9px;padding:12px 14px;border-radius:10px;border:1.5px solid var(--s200);cursor:pointer;transition:border-color .2s,background .2s}
 .fcheck-item:hover{border-color:var(--p);background:var(--p-pale2)}
 .fcheck-item.on{border-color:var(--p);background:var(--p-pale2)}
-.fcheck-item input{width:15px;height:15px;accent-color:var(--p);margin-top:1px;flex-shrink:0;cursor:pointer}
+.fcheck-item input{width:15px;height:15px;accent-color:var(--p);margin-top:2px;flex-shrink:0;cursor:pointer}
+.fcheck-text{display:flex;flex-direction:column;gap:3px}
+.fcheck-name{font-size:13px;font-weight:600;color:var(--s700);line-height:1.4}
+.fcheck-note{font-size:12px;color:var(--s400);line-height:1.4;font-weight:400}
 
 .form-rule{height:1px;background:var(--s200);grid-column:1/-1;margin:4px 0}
 .fsub{grid-column:1/-1;display:block;width:100%;padding:15px;background:var(--p);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;font-family:inherit;letter-spacing:.01em;box-shadow:0 4px 20px var(--p-glow);transition:all .2s;margin-top:4px}
@@ -256,19 +261,20 @@ ul,ol{list-style:none}
 /* ══════════════════════════════════════
    LICENSING  ⑥
 ══════════════════════════════════════ */
-.lic-card{background:linear-gradient(135deg,var(--p-brand) 0%,#0F5248 45%,#147A6E 100%);border-radius:var(--rxl);padding:56px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;overflow:hidden}
-.lic-card::before{content:'授';font-family:'Noto Sans TC',sans-serif;font-size:340px;font-weight:900;color:rgba(255,255,255,.035);position:absolute;right:-30px;bottom:-70px;line-height:1;user-select:none;pointer-events:none}
-.lic-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);background:rgba(255,255,255,.1);padding:5px 14px;border-radius:100px;display:inline-block;margin-bottom:14px;border:1px solid rgba(255,255,255,.15)}
-.lic-h2{font-size:clamp(24px,2.8vw,34px);font-weight:900;color:#fff;line-height:1.25;letter-spacing:-.02em;margin-bottom:14px}
-.lic-desc{font-size:15px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:28px;font-weight:400;max-width:360px}
-.lic-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--p-deep);padding:13px 30px;border-radius:100px;font-size:15px;font-weight:700;border:none;font-family:inherit;box-shadow:0 4px 20px rgba(0,0,0,.18);transition:all .2s}
-.lic-btn:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,.25)}
+.lic-card{background:#fff;border-radius:var(--rxl);padding:56px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;overflow:hidden;border:1.5px solid var(--s200);box-shadow:var(--shm)}
+.lic-card::before{content:'授';font-family:'Noto Sans TC',sans-serif;font-size:340px;font-weight:900;color:rgba(0,209,178,.05);position:absolute;right:-30px;bottom:-70px;line-height:1;user-select:none;pointer-events:none}
+.lic-card::after{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--p),var(--p-deep));border-radius:var(--rxl) var(--rxl) 0 0}
+.lic-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--p-deep);background:var(--p-pale);padding:5px 14px;border-radius:100px;display:inline-block;margin-bottom:14px;border:1px solid rgba(0,209,178,.25)}
+.lic-h2{font-size:clamp(24px,2.8vw,34px);font-weight:900;color:var(--s900);line-height:1.25;letter-spacing:-.02em;margin-bottom:14px}
+.lic-desc{font-size:15px;color:var(--s500);line-height:1.8;margin-bottom:28px;font-weight:400;max-width:360px}
+.lic-btn{display:inline-flex;align-items:center;gap:8px;background:var(--p);color:#fff;padding:13px 30px;border-radius:100px;font-size:15px;font-weight:700;border:none;font-family:inherit;box-shadow:0 4px 20px var(--p-glow);transition:all .2s}
+.lic-btn:hover{background:var(--p-dark);transform:translateY(-3px);box-shadow:0 10px 36px var(--p-glow2)}
 .lic-feats{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative;z-index:1}
-.lic-feat{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:var(--rl);padding:20px;backdrop-filter:blur(4px);transition:background .2s}
-.lic-feat:hover{background:rgba(255,255,255,.16)}
+.lic-feat{background:var(--s50);border:1.5px solid var(--s200);border-radius:var(--rl);padding:20px;transition:border-color .2s,background .2s,transform .2s}
+.lic-feat:hover{border-color:var(--p);background:var(--p-pale2);transform:translateY(-3px)}
 .lic-feat-ico{font-size:26px;margin-bottom:8px}
-.lic-feat-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
-.lic-feat-desc{font-size:12.5px;color:rgba(255,255,255,.58);line-height:1.5}
+.lic-feat-name{font-size:14px;font-weight:700;color:var(--s800);margin-bottom:4px}
+.lic-feat-desc{font-size:12.5px;color:var(--s500);line-height:1.55}
 
 /* ══════════════════════════════════════
    TESTIMONIALS  ⑦
@@ -276,7 +282,7 @@ ul,ol{list-style:none}
 .testi-sec{background:var(--white)}
 .testi-viewport{overflow:hidden;margin-top:52px;position:relative;padding-bottom:8px}
 .testi-track{display:flex;gap:24px;transition:transform .52s cubic-bezier(.22,1,.36,1)}
-.testi-card{flex:0 0 420px;background:#fff;border-radius:var(--rxl);padding:32px;border:1.5px solid var(--s200);box-shadow:var(--sh);transition:transform .52s cubic-bezier(.22,1,.36,1),opacity .52s,box-shadow .52s,border-color .52s;transform:scale(.88);opacity:.4}
+.testi-card{flex:0 0 520px;background:#fff;border-radius:var(--rxl);padding:36px;border:1.5px solid var(--s200);box-shadow:var(--sh);transition:transform .52s cubic-bezier(.22,1,.36,1),opacity .52s,box-shadow .52s,border-color .52s;transform:scale(.88);opacity:.4}
 .testi-card.on{transform:scale(1);opacity:1;box-shadow:var(--shg);border-color:rgba(0,209,178,.32)}
 .testi-q{font-size:15px;color:var(--s700);line-height:1.82;font-weight:400;position:relative}
 .testi-q::before{content:'\201C';font-size:52px;line-height:1;color:var(--p);font-weight:900;position:absolute;top:-8px;left:-6px;opacity:.55}
@@ -298,23 +304,25 @@ ul,ol{list-style:none}
 /* ══════════════════════════════════════
    FOOTER
 ══════════════════════════════════════ */
-.footer{background:var(--p-brand);padding:64px 32px 28px}
-.footer-inner{max-width:1180px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.ftr-mark{width:42px;height:42px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:900;color:#fff;margin-bottom:14px}
-.ftr-name{font-size:15px;font-weight:800;color:#fff;margin-bottom:8px}
-.ftr-tagline{font-size:14px;color:rgba(255,255,255,.46);line-height:1.75;max-width:260px;font-weight:400}
-.ftr-col-h{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.36);margin-bottom:14px}
-.ftr-links{display:flex;flex-direction:column;gap:9px}
-.ftr-link{font-size:14px;color:rgba(255,255,255,.58);font-weight:500;transition:color .2s}
-.ftr-link:hover{color:#fff}
-.ftr-socials{display:flex;gap:8px;margin-top:20px}
-.ftr-soc{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:15px;transition:all .2s}
-.ftr-soc:hover{background:var(--p);border-color:var(--p);color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.ftr-copy{font-size:13px;color:rgba(255,255,255,.3);font-weight:400}
-.ftr-email{font-size:13px;color:rgba(255,255,255,.42);font-weight:500;transition:color .2s}
-.ftr-email:hover{color:var(--p)}
+.footer{}
+.ftr-bar{background:var(--p-brand);padding:14px 32px}
+.ftr-bar-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.ftr-copy{font-size:13px;color:rgba(255,255,255,.55);font-weight:400}
+.ftr-bar-socials{display:flex;align-items:center;gap:20px}
+.ftr-soc-link{font-size:13px;color:rgba(255,255,255,.65);font-weight:500;transition:color .2s}
+.ftr-soc-link:hover{color:#fff}
+.ftr-mid{background:#fff;border-top:1px solid var(--s200);padding:24px 32px;text-align:center}
+.ftr-line-btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#06C755;border:1.5px solid rgba(6,199,85,.3);border-radius:100px;padding:10px 24px;transition:all .2s;background:rgba(6,199,85,.05)}
+.ftr-line-btn:hover{background:rgba(6,199,85,.12);border-color:#06C755;transform:translateY(-2px)}
+.ftr-info{background:var(--s50);border-top:1px solid var(--s200);padding:16px 32px}
+.ftr-info-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ftr-corp{font-size:13px;color:var(--s500);font-weight:500}
+.ftr-legal{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--s400)}
+.ftr-legal a{color:var(--s500);transition:color .2s}
+.ftr-legal a:hover{color:var(--p-deep)}
+.ftr-credit{background:var(--s50);border-top:1px solid var(--s200);padding:12px 32px;text-align:center;font-size:12px;color:var(--s400)}
+.ftr-credit a{color:var(--s500);font-weight:600}
+.ftr-credit a:hover{color:var(--p-deep)}
 
 @keyframes spin{to{transform:rotate(360deg)}}
 
@@ -338,8 +346,8 @@ ul,ol{list-style:none}
   .process-steps::before{display:none}
   .fg-grid{grid-template-columns:1fr}
   .fcheck-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-  .testi-card{flex:0 0 300px}
+  .ftr-bar-inner,.ftr-info-inner{flex-direction:column;align-items:flex-start;gap:8px}
+  .testi-card{flex:0 0 340px}
   .sec{padding:64px 20px}
   .hero{padding:108px 20px 64px}
 }
@@ -562,21 +570,25 @@ ul,ol{list-style:none}
     </div>
     <div class="process-steps">
       <div class="proc" data-r style="transition-delay:.06s">
+        <span class="proc-icon">📋</span>
         <div class="proc-bubble">1</div>
         <div class="proc-title">填寫諮詢表單</div>
         <p class="proc-desc">告訴我們員工人數、日文程度與培訓目標</p>
       </div>
       <div class="proc" data-r style="transition-delay:.13s">
+        <span class="proc-icon">💬</span>
         <div class="proc-bubble">2</div>
         <div class="proc-title">顧問評估提案</div>
         <p class="proc-desc">根據需求提供客製化課程組合與報價</p>
       </div>
       <div class="proc" data-r style="transition-delay:.20s">
+        <span class="proc-icon">🚀</span>
         <div class="proc-bubble">3</div>
         <div class="proc-title">確認方案開課</div>
         <p class="proc-desc">完成合約與分班測驗，安排正式開課時程</p>
       </div>
       <div class="proc" data-r style="transition-delay:.27s">
+        <span class="proc-icon">📊</span>
         <div class="proc-bubble">4</div>
         <div class="proc-title">成效追蹤回報</div>
         <p class="proc-desc">定期學習進度報告，確保培訓可見成果</p>
@@ -639,19 +651,31 @@ ul,ol{list-style:none}
                 <div class="fcheck-grid">
                   <label class="fcheck-item" onclick="toggleCheck(this)">
                     <input type="checkbox">
-                    《全方位日文起步班》<br><span style="color:var(--s400);font-size:12px">文法＋口說，適合零基礎</span>
+                    <div class="fcheck-text">
+                      <span class="fcheck-name">《全方位日文起步班》</span>
+                      <span class="fcheck-note">文法＋口說，適合零基礎</span>
+                    </div>
                   </label>
                   <label class="fcheck-item" onclick="toggleCheck(this)">
                     <input type="checkbox">
-                    《1對1・語感練功坊》<br><span style="color:var(--s400);font-size:12px">日籍老師 1 對 1 口說訓練</span>
+                    <div class="fcheck-text">
+                      <span class="fcheck-name">《1對1・語感練功坊》</span>
+                      <span class="fcheck-note">日籍老師 1 對 1 口說訓練</span>
+                    </div>
                   </label>
                   <label class="fcheck-item" onclick="toggleCheck(this)">
                     <input type="checkbox">
-                    《職場日文術》<br><span style="color:var(--s400);font-size:12px">商用日文影片課</span>
+                    <div class="fcheck-text">
+                      <span class="fcheck-name">《職場日文術》</span>
+                      <span class="fcheck-note">商用日文影片課</span>
+                    </div>
                   </label>
                   <label class="fcheck-item" onclick="toggleCheck(this)">
                     <input type="checkbox">
-                    課程影音授權方案<br><span style="color:var(--s400);font-size:12px">上架至企業自有平台</span>
+                    <div class="fcheck-text">
+                      <span class="fcheck-name">課程影音授權方案</span>
+                      <span class="fcheck-note">上架至企業自有平台</span>
+                    </div>
                   </label>
                 </div>
               </div>
@@ -802,46 +826,33 @@ ul,ol{list-style:none}
 
 <!-- ━━━━━━━━━━━━━━━━  FOOTER  ━━━━━━━━━━━━━━━━ -->
 <footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div>
-        <div class="ftr-mark">泥日</div>
-        <div class="ftr-name">泥日教育 Nii Education</div>
-        <p class="ftr-tagline">讓日文成為企業競爭力的關鍵武器——專為企業 HR 設計的客製化日文內訓解決方案。</p>
-        <div class="ftr-socials" style="margin-top:20px">
-          <a href="#" class="ftr-soc" title="Facebook">
-            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="#" class="ftr-soc" title="Instagram">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
-          </a>
-          <a href="#" class="ftr-soc" title="LINE">
-            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.14 2 11.25c0 2.75 1.33 5.22 3.43 6.92-.06.21-.4 1.38-.46 1.61-.07.27.1.27.21.2L7.07 18.74c.56.16 1.15.25 1.76.27.16.01.32.01.47.01C15.52 19.02 22 15.34 22 11.25 22 6.14 17.52 2 12 2z"/></svg>
-          </a>
-        </div>
+  <div class="ftr-bar">
+    <div class="ftr-bar-inner">
+      <span class="ftr-copy">© 2026 Nii School. All rights reserved.</span>
+      <div class="ftr-bar-socials">
+        <a href="#" class="ftr-soc-link">Instagram</a>
+        <a href="#" class="ftr-soc-link">LINE@</a>
+        <a href="#" class="ftr-soc-link">Facebook</a>
       </div>
-      <div>
-        <div class="ftr-col-h">課程方案</div>
-        <div class="ftr-links">
-          <a href="#courses" class="ftr-link">全方位日文起步班</a>
-          <a href="#courses" class="ftr-link">1 對 1 語感練功坊</a>
-          <a href="#courses" class="ftr-link">職場日文術</a>
-          <a href="#licensing" class="ftr-link">課程影音授權</a>
-        </div>
-      </div>
-      <div>
-        <div class="ftr-col-h">聯絡我們</div>
-        <div class="ftr-links">
-          <a href="mailto:biz@nii.school" class="ftr-link ftr-email">biz@nii.school</a>
-          <a href="https://nii.school/" target="_blank" class="ftr-link">nii.school →</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="ftr-copy">© 2026 泥日教育 Nii Education. All rights reserved.</div>
-      <div class="ftr-copy">企業洽詢：<a href="mailto:biz@nii.school" class="ftr-email">biz@nii.school</a></div>
     </div>
   </div>
+  <div class="ftr-mid">
+    <a href="#" class="ftr-line-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.14 2 11.25c0 2.75 1.33 5.22 3.43 6.92-.06.21-.4 1.38-.46 1.61-.07.27.1.27.21.2l1.89-1.22c.56.16 1.15.25 1.76.27.16.01.32.01.47.01C15.52 19.02 22 15.34 22 11.25 22 6.14 17.52 2 12 2z"/></svg>
+      LINE@
+    </a>
+  </div>
+  <div class="ftr-info">
+    <div class="ftr-info-inner">
+      <span class="ftr-corp">泥日教育股份有限公司　83223956</span>
+      <div class="ftr-legal">
+        <a href="#">隱私權條款</a>
+        <span>·</span>
+        <a href="#">使用條款</a>
+      </div>
+    </div>
+  </div>
+  <div class="ftr-credit">Made with ♥ by 無為教育科技股份有限公司 · <a href="https://teachify.cc" target="_blank">Teachify</a></div>
 </footer>
 
 <button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
