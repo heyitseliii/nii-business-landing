@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泥日教育 × 企業日文培訓 ｜ Nii Education Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   DESIGN TOKENS
+══════════════════════════════════════ */
+:root {
+  --p:        #00D1B2;
+  --p-dark:   #00B89A;
+  --p-deep:   #009980;
+  --p-brand:  #083832;   /* footer dark */
+  --p-pale:   #E6FBF7;
+  --p-pale2:  #F0FDFB;
+  --p-glow:   rgba(0,209,178,.18);
+  --p-glow2:  rgba(0,209,178,.28);
+
+  --s50:  #F8FAFC;
+  --s100: #F1F5F9;
+  --s200: #E2E8F0;
+  --s300: #CBD5E1;
+  --s400: #94A3B8;
+  --s500: #64748B;
+  --s600: #475569;
+  --s700: #334155;
+  --s800: #1E293B;
+  --s900: #0F172A;
+  --white:#FFFFFF;
+
+  --sh:   0 4px 24px rgba(0,0,0,.06), 0 1px 4px rgba(0,0,0,.04);
+  --shm:  0 12px 48px rgba(0,0,0,.10), 0 4px 12px rgba(0,0,0,.06);
+  --shg:  0 16px 56px var(--p-glow),   0 4px 16px rgba(0,0,0,.06);
+  --r:12px; --rl:20px; --rxl:28px;
+}
+
+/* ══════════════════════════════════════
+   RESET + BASE
+══════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Plus Jakarta Sans','Noto Sans TC',sans-serif;color:var(--s800);background:var(--white);overflow-x:hidden;line-height:1.65}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit}
+ul,ol{list-style:none}
+
+/* ══════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════ */
+[data-r]{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+[data-r=l]{transform:translateX(-28px)}
+[data-r=r]{transform:translateX( 28px)}
+[data-r=s]{transform:scale(.96)}
+[data-r].vis{opacity:1;transform:none}
+.d1{transition-delay:.07s!important}.d2{transition-delay:.14s!important}
+.d3{transition-delay:.21s!important}.d4{transition-delay:.28s!important}
+
+/* ══════════════════════════════════════
+   UTILITY
+══════════════════════════════════════ */
+.wrap{max-width:1180px;margin:0 auto}
+.sec{padding:96px 32px}
+.sec-alt{background:var(--s50)}
+.eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--p-deep);background:var(--p-pale);padding:5px 14px;border-radius:100px;border:1px solid rgba(0,209,178,.28)}
+.h2{font-size:clamp(28px,3.5vw,44px);font-weight:900;line-height:1.18;letter-spacing:-.025em;color:var(--s900)}
+.lead{font-size:clamp(15px,1.3vw,17px);color:var(--s500);line-height:1.85;font-weight:400}
+.sec-head{margin-bottom:56px}
+.sec-head .eyebrow{margin-bottom:14px}
+.sec-head .h2{margin-bottom:12px}
+.center{text-align:center}
+.center .lead{max-width:520px;margin:0 auto}
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--s200);transition:box-shadow .3s}
+.nav.up{box-shadow:0 4px 24px rgba(0,0,0,.07)}
+.nav-inner{max-width:1180px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:38px;height:38px;background:var(--p);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:900;color:#fff;box-shadow:0 4px 14px var(--p-glow)}
+.logo-name{font-size:16px;font-weight:800;color:var(--s900);letter-spacing:-.01em}
+.logo-sub{font-size:10px;color:var(--s400);font-weight:500;letter-spacing:.07em;text-transform:uppercase;margin-top:1px}
+.logo-sep{width:1px;height:18px;background:var(--s200);margin:0 8px}
+.logo-biz{font-size:11px;font-weight:700;color:var(--p-deep);letter-spacing:.12em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-a{font-size:14px;font-weight:600;color:var(--s600);padding:7px 14px;border-radius:8px;transition:color .2s,background .2s}
+.nav-a:hover{color:var(--s900);background:var(--s100)}
+.nav-cta{background:var(--p);color:#fff;padding:10px 24px;border-radius:100px;font-size:14px;font-weight:700;border:none;margin-left:8px;box-shadow:0 4px 16px var(--p-glow);transition:all .2s}
+.nav-cta:hover{background:var(--p-dark);transform:translateY(-2px);box-shadow:0 8px 24px var(--p-glow2)}
+
+/* ══════════════════════════════════════
+   HERO  ①
+══════════════════════════════════════ */
+.hero{padding:128px 32px 88px;position:relative;overflow:hidden;background:var(--white)}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--s200) 1px,transparent 1px),linear-gradient(90deg,var(--s200) 1px,transparent 1px);background-size:60px 60px;-webkit-mask:radial-gradient(75% 75% at 50% 0%,#000 30%,transparent 100%);mask:radial-gradient(75% 75% at 50% 0%,#000 30%,transparent 100%);opacity:.35;pointer-events:none}
+.hero-glow{position:absolute;top:-160px;right:-180px;width:640px;height:640px;background:radial-gradient(circle,rgba(0,209,178,.11) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative}
+
+/* hero left */
+.hero-badge-row{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.ping-dot{width:8px;height:8px;border-radius:50%;background:var(--p);flex-shrink:0;animation:ping 2s ease-in-out infinite}
+@keyframes ping{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.7);opacity:.4}}
+.hero-h1{font-size:clamp(40px,5vw,62px);font-weight:900;line-height:1.1;letter-spacing:-.03em;color:var(--s900);margin-bottom:20px}
+.hero-h1 em{font-style:normal;color:var(--p)}
+.hero-lead{font-size:clamp(15px,1.4vw,17px);color:var(--s500);line-height:1.85;max-width:480px;margin-bottom:36px}
+.hero-btns{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.btn-fill{display:inline-flex;align-items:center;gap:8px;background:var(--p);color:#fff;padding:14px 32px;border-radius:100px;font-size:15px;font-weight:700;border:none;box-shadow:0 6px 24px var(--p-glow);transition:all .25s cubic-bezier(.22,1,.36,1)}
+.btn-fill:hover{background:var(--p-dark);transform:translateY(-3px);box-shadow:0 12px 36px var(--p-glow2)}
+.btn-outline{display:inline-flex;align-items:center;gap:7px;color:var(--s600);font-size:15px;font-weight:600;background:transparent;border:1.5px solid var(--s200);padding:13px 26px;border-radius:100px;transition:all .2s}
+.btn-outline:hover{color:var(--s900);border-color:var(--s400);background:var(--s50)}
+.hero-proof{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.proof-item{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--s500)}
+.proof-check{color:var(--p);font-weight:900;font-size:14px}
+.proof-sep{width:1px;height:14px;background:var(--s200)}
+
+/* hero right visual */
+.hero-visual{position:relative}
+.dash-card{background:#fff;border-radius:var(--rxl);padding:28px;box-shadow:var(--shm);border:1px solid var(--s200);position:relative;z-index:1}
+.dash-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.dash-ava{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--p),var(--p-deep));display:flex;align-items:center;justify-content:center;font-size:19px}
+.dash-info{margin-left:10px}
+.dash-name{font-size:13.5px;font-weight:700;color:var(--s900)}
+.dash-date{font-size:11.5px;color:var(--s400);margin-top:1px}
+.live-pill{display:inline-flex;align-items:center;gap:5px;background:#FEF2F2;color:#DC2626;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;border:1px solid rgba(220,38,38,.2)}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#DC2626;animation:ping 1.6s ease-in-out infinite}
+.lesson{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:12px;background:var(--s50);margin-bottom:8px;border:1px solid var(--s100);transition:all .2s;cursor:default}
+.lesson:last-child{margin-bottom:0}
+.lesson:hover{border-color:rgba(0,209,178,.4);box-shadow:0 2px 12px var(--p-glow)}
+.les-ico{width:36px;height:36px;border-radius:9px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;box-shadow:var(--sh)}
+.les-name{font-size:13px;font-weight:700;color:var(--s800)}
+.les-sub{font-size:11px;color:var(--s400);margin-top:1px}
+.les-tag{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:100px;white-space:nowrap;margin-left:auto;flex-shrink:0}
+.tag-green{background:rgba(0,209,178,.12);color:var(--p-deep)}
+.tag-blue{background:rgba(59,130,246,.1);color:#2563EB}
+.tag-amber{background:rgba(245,158,11,.1);color:#B45309}
+.float{position:absolute;background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,.12);padding:12px 16px;border:1px solid var(--s100);z-index:2}
+.float-tl{top:-16px;left:-30px}
+.float-br{bottom:-16px;right:-18px}
+.float-ico{font-size:20px;margin-bottom:3px}
+.float-val{font-size:17px;font-weight:900;color:var(--s900);line-height:1}
+.float-lbl{font-size:11px;color:var(--s400);margin-top:2px}
+
+/* ══════════════════════════════════════
+   FEATURES  ②
+══════════════════════════════════════ */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feat-card{background:#fff;border-radius:var(--rl);padding:32px;border:1.5px solid var(--s200);box-shadow:var(--sh);transition:border-color .3s,box-shadow .3s,transform .3s cubic-bezier(.22,1,.36,1)}
+.feat-card:hover{border-color:var(--p);box-shadow:var(--shg);transform:translateY(-6px)}
+.feat-num{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--p);margin-bottom:14px}
+.feat-icon{width:48px;height:48px;border-radius:14px;background:var(--p-pale);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;border:1px solid rgba(0,209,178,.2)}
+.feat-title{font-size:18px;font-weight:800;color:var(--s900);margin-bottom:8px;letter-spacing:-.01em}
+.feat-desc{font-size:14px;color:var(--s500);line-height:1.78;font-weight:400}
+
+/* ══════════════════════════════════════
+   COURSES  ③
+══════════════════════════════════════ */
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.course-card{background:#fff;border-radius:var(--rxl);overflow:hidden;border:1.5px solid var(--s200);box-shadow:var(--sh);display:flex;flex-direction:column;transition:border-color .3s,box-shadow .3s,transform .3s cubic-bezier(.22,1,.36,1)}
+.course-card:hover{border-color:var(--p);box-shadow:var(--shg);transform:translateY(-8px)}
+.cvis{height:170px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.cv1{background:linear-gradient(135deg,#E6FBF7 0%,#B2F0E8 100%)}
+.cv2{background:linear-gradient(135deg,#FFF7ED 0%,#FED7AA 100%)}
+.cv3{background:linear-gradient(135deg,#EFF6FF 0%,#BFDBFE 100%)}
+.cvis-kanji{font-family:'Noto Sans TC',sans-serif;font-size:108px;font-weight:900;position:absolute;right:-6px;bottom:-14px;opacity:.09;line-height:1;user-select:none;pointer-events:none}
+.cv1 .cvis-kanji{color:#00796B}.cv2 .cvis-kanji{color:#92400E}.cv3 .cvis-kanji{color:#1E40AF}
+.cvis-icon{font-size:54px;position:relative;z-index:1}
+.ctag-pos{position:absolute;top:12px;left:12px;font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;letter-spacing:.02em}
+.ct1{background:rgba(0,209,178,.15);color:var(--p-deep)}
+.ct2{background:rgba(249,115,22,.12);color:#C2410C}
+.ct3{background:rgba(59,130,246,.12);color:#1D4ED8}
+.clevel{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.85);border-radius:100px;padding:3px 10px;font-size:10.5px;color:var(--s500);font-weight:500;backdrop-filter:blur(4px)}
+.cbody{padding:24px;flex:1;display:flex;flex-direction:column}
+.ctitle{font-size:19px;font-weight:900;color:var(--s900);margin-bottom:5px;letter-spacing:-.01em}
+.csub{font-size:11.5px;font-weight:700;color:var(--s400);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.cdesc{font-size:13.5px;color:var(--s500);line-height:1.78;margin-bottom:16px;flex:1;font-weight:400}
+.ctags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:15px}
+.cchip{font-size:12px;font-weight:600;padding:4px 11px;border-radius:8px;background:var(--s100);color:var(--s600);border:1px solid var(--s200)}
+.clist{margin-bottom:18px;display:flex;flex-direction:column;gap:7px}
+.clist li{font-size:13px;color:var(--s600);display:flex;align-items:flex-start;gap:8px;line-height:1.55}
+.cli-check{color:var(--p);font-weight:900;flex-shrink:0;margin-top:0px}
+.cbtn{display:block;width:100%;padding:12px;background:var(--s900);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;font-family:inherit;transition:all .2s}
+.course-card:hover .cbtn{background:var(--p);box-shadow:0 4px 16px var(--p-glow)}
+.cbtn:hover{transform:translateY(-1px)}
+
+/* ══════════════════════════════════════
+   PROCESS  ④
+══════════════════════════════════════ */
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:52px;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:calc(12.5% + 4px);right:calc(12.5% + 4px);height:2px;background:linear-gradient(90deg,var(--p),var(--p-deep));border-radius:2px;z-index:0}
+.proc{text-align:center;padding:0 16px;position:relative;z-index:1}
+.proc-bubble{width:56px;height:56px;border-radius:50%;background:var(--p);color:#fff;font-size:22px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 4px 20px var(--p-glow);border:4px solid var(--white);letter-spacing:-.01em}
+.proc-title{font-size:15px;font-weight:800;color:var(--s900);margin-bottom:7px;letter-spacing:-.01em}
+.proc-desc{font-size:13px;color:var(--s500);line-height:1.65;font-weight:400}
+
+/* ══════════════════════════════════════
+   CONTACT FORM  ⑤
+══════════════════════════════════════ */
+.contact-sec{background:var(--s50)}
+.contact-inner{display:grid;grid-template-columns:1fr 1.45fr;gap:72px;align-items:start}
+/* left info */
+.contact-info{padding-top:8px}
+.contact-info .h2{margin:14px 0 16px}
+.contact-lead{font-size:15px;color:var(--s500);line-height:1.8;font-weight:400;margin-bottom:28px}
+.contact-email-box{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--s200);border-radius:var(--r);padding:14px 18px;margin-bottom:20px;transition:border-color .2s}
+.contact-email-box:hover{border-color:var(--p)}
+.cem-icon{font-size:22px;flex-shrink:0}
+.cem-label{font-size:11px;color:var(--s400);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.cem-val{font-size:14.5px;font-weight:700;color:var(--p-deep)}
+.contact-proofs{display:flex;flex-direction:column;gap:10px}
+.cproof{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--s600);font-weight:500}
+.cproof-dot{width:6px;height:6px;border-radius:50%;background:var(--p);flex-shrink:0}
+/* form card */
+.form-card{background:#fff;border-radius:var(--rxl);padding:40px;border:1.5px solid var(--s200);box-shadow:var(--sh)}
+.fg-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg.full{grid-column:1/-1}
+.fl{font-size:12.5px;font-weight:700;color:var(--s700);letter-spacing:.01em}
+.fl .req{color:#EF4444;margin-left:2px}
+
+/* inputs */
+.fi,.fta{padding:12px 16px;border:1.5px solid var(--s200);border-radius:var(--r);font-size:14px;font-family:inherit;color:var(--s800);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
+.fi::placeholder,.fta::placeholder{color:var(--s300)}
+.fi:focus,.fta:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(0,209,178,.11)}
+.fta{min-height:90px;resize:vertical}
+
+/* ── select: placeholder colour logic ── */
+.fsel{padding:12px 16px;border:1.5px solid var(--s200);border-radius:var(--r);font-size:14px;font-family:inherit;background:#fff;outline:none;transition:border-color .2s,box-shadow .2s;width:100%;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.fsel:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(0,209,178,.11)}
+/* placeholder state – set by JS */
+.fsel.ph{color:var(--s300)}
+.fsel:not(.ph){color:var(--s800)}
+.fsel option{color:var(--s800)}
+
+/* checkboxes */
+.fcheck-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fcheck-item{display:flex;align-items:flex-start;gap:9px;padding:12px 14px;border-radius:10px;border:1.5px solid var(--s200);cursor:pointer;transition:border-color .2s,background .2s;font-size:13px;font-weight:500;color:var(--s700);line-height:1.45}
+.fcheck-item:hover{border-color:var(--p);background:var(--p-pale2)}
+.fcheck-item.on{border-color:var(--p);background:var(--p-pale2)}
+.fcheck-item input{width:15px;height:15px;accent-color:var(--p);margin-top:1px;flex-shrink:0;cursor:pointer}
+
+.form-rule{height:1px;background:var(--s200);grid-column:1/-1;margin:4px 0}
+.fsub{grid-column:1/-1;display:block;width:100%;padding:15px;background:var(--p);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;font-family:inherit;letter-spacing:.01em;box-shadow:0 4px 20px var(--p-glow);transition:all .2s;margin-top:4px}
+.fsub:hover{background:var(--p-dark);transform:translateY(-2px);box-shadow:0 8px 32px var(--p-glow2)}
+.fsub:disabled{background:var(--p-deep);cursor:not-allowed;transform:none;box-shadow:none}
+/* success msg */
+.form-success{display:none;grid-column:1/-1;text-align:center;padding:28px 0}
+.form-success-ico{font-size:48px;margin-bottom:12px}
+.form-success-title{font-size:20px;font-weight:800;color:var(--s900);margin-bottom:8px}
+.form-success-sub{font-size:15px;color:var(--s500)}
+
+/* ══════════════════════════════════════
+   LICENSING  ⑥
+══════════════════════════════════════ */
+.lic-card{background:linear-gradient(135deg,var(--p-brand) 0%,#0F5248 45%,#147A6E 100%);border-radius:var(--rxl);padding:56px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;overflow:hidden}
+.lic-card::before{content:'授';font-family:'Noto Sans TC',sans-serif;font-size:340px;font-weight:900;color:rgba(255,255,255,.035);position:absolute;right:-30px;bottom:-70px;line-height:1;user-select:none;pointer-events:none}
+.lic-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);background:rgba(255,255,255,.1);padding:5px 14px;border-radius:100px;display:inline-block;margin-bottom:14px;border:1px solid rgba(255,255,255,.15)}
+.lic-h2{font-size:clamp(24px,2.8vw,34px);font-weight:900;color:#fff;line-height:1.25;letter-spacing:-.02em;margin-bottom:14px}
+.lic-desc{font-size:15px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:28px;font-weight:400;max-width:360px}
+.lic-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--p-deep);padding:13px 30px;border-radius:100px;font-size:15px;font-weight:700;border:none;font-family:inherit;box-shadow:0 4px 20px rgba(0,0,0,.18);transition:all .2s}
+.lic-btn:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,.25)}
+.lic-feats{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative;z-index:1}
+.lic-feat{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:var(--rl);padding:20px;backdrop-filter:blur(4px);transition:background .2s}
+.lic-feat:hover{background:rgba(255,255,255,.16)}
+.lic-feat-ico{font-size:26px;margin-bottom:8px}
+.lic-feat-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
+.lic-feat-desc{font-size:12.5px;color:rgba(255,255,255,.58);line-height:1.5}
+
+/* ══════════════════════════════════════
+   TESTIMONIALS  ⑦
+══════════════════════════════════════ */
+.testi-sec{background:var(--white)}
+.testi-viewport{overflow:hidden;margin-top:52px;position:relative;padding-bottom:8px}
+.testi-track{display:flex;gap:24px;transition:transform .52s cubic-bezier(.22,1,.36,1)}
+.testi-card{flex:0 0 420px;background:#fff;border-radius:var(--rxl);padding:32px;border:1.5px solid var(--s200);box-shadow:var(--sh);transition:transform .52s cubic-bezier(.22,1,.36,1),opacity .52s,box-shadow .52s,border-color .52s;transform:scale(.88);opacity:.4}
+.testi-card.on{transform:scale(1);opacity:1;box-shadow:var(--shg);border-color:rgba(0,209,178,.32)}
+.testi-q{font-size:15px;color:var(--s700);line-height:1.82;font-weight:400;position:relative}
+.testi-q::before{content:'\201C';font-size:52px;line-height:1;color:var(--p);font-weight:900;position:absolute;top:-8px;left:-6px;opacity:.55}
+.testi-q-inner{padding:18px 0 0 10px}
+.testi-rule{height:1px;background:var(--s200);margin:20px 0}
+.testi-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.testi-ava-row{display:flex;align-items:center;gap:10px}
+.testi-ava{width:44px;height:44px;border-radius:50%;background:var(--s100);border:2px solid var(--s200);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.testi-name{font-size:14px;font-weight:700;color:var(--s900)}
+.testi-role{font-size:12px;color:var(--s400);margin-top:1px}
+.testi-logo{background:var(--s100);border:1.5px solid var(--s200);border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--s400);letter-spacing:.04em;white-space:nowrap;filter:grayscale(1);transition:filter .3s,color .3s,border-color .3s}
+.testi-card.on .testi-logo{filter:none;color:var(--s700);border-color:rgba(0,209,178,.4)}
+.testi-controls{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:28px}
+.te-btn{width:42px;height:42px;border-radius:50%;background:#fff;border:1.5px solid var(--s200);color:var(--s500);font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh);transition:all .2s}
+.te-btn:hover{border-color:var(--p);color:var(--p);transform:scale(1.08)}
+.te-dot{width:8px;height:8px;border-radius:100px;background:var(--s300);border:none;cursor:pointer;transition:all .25s;padding:0}
+.te-dot.on{background:var(--p);width:24px}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+.footer{background:var(--p-brand);padding:64px 32px 28px}
+.footer-inner{max-width:1180px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ftr-mark{width:42px;height:42px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:900;color:#fff;margin-bottom:14px}
+.ftr-name{font-size:15px;font-weight:800;color:#fff;margin-bottom:8px}
+.ftr-tagline{font-size:14px;color:rgba(255,255,255,.46);line-height:1.75;max-width:260px;font-weight:400}
+.ftr-col-h{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.36);margin-bottom:14px}
+.ftr-links{display:flex;flex-direction:column;gap:9px}
+.ftr-link{font-size:14px;color:rgba(255,255,255,.58);font-weight:500;transition:color .2s}
+.ftr-link:hover{color:#fff}
+.ftr-socials{display:flex;gap:8px;margin-top:20px}
+.ftr-soc{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:15px;transition:all .2s}
+.ftr-soc:hover{background:var(--p);border-color:var(--p);color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ftr-copy{font-size:13px;color:rgba(255,255,255,.3);font-weight:400}
+.ftr-email{font-size:13px;color:rgba(255,255,255,.42);font-weight:500;transition:color .2s}
+.ftr-email:hover{color:var(--p)}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* back to top */
+.btt{position:fixed;bottom:28px;right:28px;z-index:100;width:44px;height:44px;border-radius:50%;background:var(--p);color:#fff;border:none;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px var(--p-glow);opacity:0;pointer-events:none;transition:opacity .3s,transform .2s}
+.btt.show{opacity:1;pointer-events:all}
+.btt:hover{transform:translateY(-3px)}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media(max-width:1060px){
+  .hero-inner,.lic-card,.contact-inner{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .lic-card{padding:40px 32px;gap:32px}
+}
+@media(max-width:768px){
+  .nav-a{display:none}
+  .feat-grid,.courses-grid{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:1fr 1fr;gap:24px}
+  .process-steps::before{display:none}
+  .fg-grid{grid-template-columns:1fr}
+  .fcheck-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .testi-card{flex:0 0 300px}
+  .sec{padding:64px 20px}
+  .hero{padding:108px 20px 64px}
+}
+</style>
+</head>
+<body>
+
+<!-- ━━━━━━━━━━━━━━━━  NAV  ━━━━━━━━━━━━━━━━ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-mark">泥日</div>
+      <div>
+        <div class="logo-name">泥日教育</div>
+        <div class="logo-sub">Nii Education</div>
+      </div>
+      <div class="logo-sep"></div>
+      <div class="logo-biz">Business</div>
+    </div>
+    <div class="nav-links">
+      <a href="#features"  class="nav-a">核心優勢</a>
+      <a href="#courses"   class="nav-a">課程方案</a>
+      <a href="#contact"   class="nav-a">聯絡我們</a>
+      <a href="#contact"><button class="nav-cta">免費諮詢</button></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ━━━━━━━━━━━━━━━━  ① HERO  ━━━━━━━━━━━━━━━━ -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+
+    <div>
+      <div class="hero-badge-row" data-r>
+        <div class="ping-dot"></div>
+        <span class="eyebrow">企業日文培訓解決方案</span>
+      </div>
+      <h1 class="hero-h1" data-r style="transition-delay:.08s">
+        幫助您的團隊<br><em>掌握日文實戰力</em>
+      </h1>
+      <p class="lead hero-lead" data-r style="transition-delay:.15s">
+        客製化內訓課程 × 台日雙師資，從零基礎到商用口說，讓員工真正在職場開口，提升企業對日競爭力。
+      </p>
+      <div class="hero-btns" data-r style="transition-delay:.22s">
+        <a href="#contact" class="btn-fill">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          免費諮詢企業方案
+        </a>
+        <a href="#courses" class="btn-outline">
+          瀏覽課程
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      </div>
+      <div class="hero-proof" data-r style="transition-delay:.29s">
+        <div class="proof-item"><span class="proof-check">✓</span>台積電・曉數碼・ARTOGO 採用</div>
+        <div class="proof-sep"></div>
+        <div class="proof-item"><span class="proof-check">✓</span>95% 學員完課率</div>
+      </div>
+    </div>
+
+    <div class="hero-visual" data-r=r style="transition-delay:.18s">
+      <div class="float float-tl">
+        <div class="float-ico">🎯</div>
+        <div class="float-val">100%</div>
+        <div class="float-lbl">全日文口說練習</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-top">
+          <div style="display:flex;align-items:center">
+            <div class="dash-ava">👩‍🏫</div>
+            <div class="dash-info">
+              <div class="dash-name">本日授業 — 進行中</div>
+              <div class="dash-date">2026 年 4 月 · 第 12 週</div>
+            </div>
+          </div>
+          <div class="live-pill"><div class="live-dot"></div>LIVE</div>
+        </div>
+        <div class="lesson">
+          <div class="les-ico">📖</div>
+          <div style="flex:1"><div class="les-name">商用敬語・メール文法</div><div class="les-sub">職場日文術 Unit 3</div></div>
+          <div class="les-tag tag-green">進行中</div>
+        </div>
+        <div class="lesson">
+          <div class="les-ico">🎙️</div>
+          <div style="flex:1"><div class="les-name">全日文口說訓練</div><div class="les-sub">1 對 1 語感練功坊</div></div>
+          <div class="les-tag tag-blue">下一堂</div>
+        </div>
+        <div class="lesson">
+          <div class="les-ico">✍️</div>
+          <div style="flex:1"><div class="les-name">聽說讀寫專項練習</div><div class="les-sub">主題：電話應對</div></div>
+          <div class="les-tag tag-amber">作業</div>
+        </div>
+      </div>
+      <div class="float float-br">
+        <div class="float-ico">⭐</div>
+        <div class="float-val">9 個月</div>
+        <div class="float-lbl">從零基礎到 N3</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━  ② 為什麼選擇我們  ━━━━━━━━━━━━━━━━ -->
+<section class="sec sec-alt" id="features">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <div class="eyebrow">為什麼選擇我們</div>
+      <h2 class="h2" style="margin-top:12px">專為企業設計的日文培訓體系</h2>
+      <p class="lead" style="margin-top:12px">不是補習班，而是可量化成效的企業培訓夥伴</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card" data-r style="transition-delay:.06s">
+        <div class="feat-num">01</div>
+        <div class="feat-icon">🎯</div>
+        <div class="feat-title">客製化課程規劃</div>
+        <p class="feat-desc">依照員工程度、產業背景與企業需求量身設計學習路徑，確保每一節課都切中實際工作所需。</p>
+      </div>
+      <div class="feat-card" data-r style="transition-delay:.13s">
+        <div class="feat-num">02</div>
+        <div class="feat-icon">👩‍🏫</div>
+        <div class="feat-title">台日雙師實戰師資</div>
+        <p class="feat-desc">台灣老師建立文法基礎，日本籍老師進行全日文口說實戰訓練，雙軌並進打造真實溝通能力。</p>
+      </div>
+      <div class="feat-card" data-r style="transition-delay:.20s">
+        <div class="feat-num">03</div>
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">透明成效追蹤報告</div>
+        <p class="feat-desc">定期提供每位學員學習進度報告，HR 可即時掌握培訓成效，讓培訓預算的 ROI 清晰可見。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━  ③ 三大主力課程  ━━━━━━━━━━━━━━━━ -->
+<section class="sec" id="courses">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <div class="eyebrow">三大主力課程</div>
+      <h2 class="h2" style="margin-top:12px">依需求選擇最適合的方案</h2>
+      <p class="lead" style="margin-top:12px">從零基礎到商用職場，不同程度都有對應的學習路徑</p>
+    </div>
+    <div class="courses-grid">
+
+      <div class="course-card" data-r style="transition-delay:.06s">
+        <div class="cvis cv1">
+          <div class="cvis-kanji">始</div>
+          <div class="cvis-icon">🌱</div>
+          <div class="ctag-pos ct1">最受歡迎</div>
+          <div class="clevel">零基礎 ～ 初學</div>
+        </div>
+        <div class="cbody">
+          <div class="ctitle">《全方位日文起步班》</div>
+          <div class="csub">Foundation Course</div>
+          <p class="cdesc">台日雙師資聯合授課，獨家兩階段學習法，幫助員工九個月從零基礎到能聽能說 N3 程度。</p>
+          <div class="ctags"><span class="cchip">文法建構</span><span class="cchip">全日文口說</span><span class="cchip">小班 5 人</span></div>
+          <ul class="clist">
+            <li><span class="cli-check">✓</span>每週文法課 1.5 小時＋練習題</li>
+            <li><span class="cli-check">✓</span>全日文口說課 2 小時</li>
+            <li><span class="cli-check">✓</span>台日雙師聯合授課</li>
+          </ul>
+          <a href="#contact" class="cbtn">洽詢這門課 →</a>
+        </div>
+      </div>
+
+      <div class="course-card" data-r style="transition-delay:.13s">
+        <div class="cvis cv2">
+          <div class="cvis-kanji">話</div>
+          <div class="cvis-icon">💬</div>
+          <div class="ctag-pos ct2">口說強化</div>
+          <div class="clevel">有文法基礎</div>
+        </div>
+        <div class="cbody">
+          <div class="ctitle">《1對1・語感練功坊》</div>
+          <div class="csub">Speaking Mastery</div>
+          <p class="cdesc">日籍老師 1 對 1 全日文訓練，逐句修正文法錯誤及台式日文，擴充表達豐富度與語感精準度。</p>
+          <div class="ctags"><span class="cchip">1 對 1 專屬</span><span class="cchip">日籍老師</span><span class="cchip">即時修正</span></div>
+          <ul class="clist">
+            <li><span class="cli-check">✓</span>每週聽說讀寫專項練習</li>
+            <li><span class="cli-check">✓</span>全日文口說 50 分鐘</li>
+            <li><span class="cli-check">✓</span>1 人專屬課程設計</li>
+          </ul>
+          <a href="#contact" class="cbtn">洽詢這門課 →</a>
+        </div>
+      </div>
+
+      <div class="course-card" data-r style="transition-delay:.20s">
+        <div class="cvis cv3">
+          <div class="cvis-kanji">職</div>
+          <div class="cvis-icon">💼</div>
+          <div class="ctag-pos ct3">商用實戰</div>
+          <div class="clevel">N2 程度以上</div>
+        </div>
+        <div class="cbody">
+          <div class="ctitle">《職場日文術》</div>
+          <div class="csub">Business Japanese</div>
+          <p class="cdesc">商用敬語、電話、書信、簡報等情境課程，搭配道謝、道歉、催促等實例，立即可用於工作。</p>
+          <div class="ctags"><span class="cchip">影片課程</span><span class="cchip">不限次數</span><span class="cchip">可授權上架</span></div>
+          <ul class="clist">
+            <li><span class="cli-check">✓</span>涵蓋電話・書信・簡報情境</li>
+            <li><span class="cli-check">✓</span>可隨時觀看，不限次數</li>
+            <li><span class="cli-check">✓</span>支援企業平台影片授權</li>
+          </ul>
+          <a href="#contact" class="cbtn">洽詢這門課 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━  ④ 合作流程  ━━━━━━━━━━━━━━━━ -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <div class="eyebrow">合作流程</div>
+      <h2 class="h2" style="margin-top:12px">4 步驟，輕鬆啟動企業培訓</h2>
+      <p class="lead" style="margin-top:12px">任何問題歡迎與我們洽談，有任何需求都優先處理</p>
+    </div>
+    <div class="process-steps">
+      <div class="proc" data-r style="transition-delay:.06s">
+        <div class="proc-bubble">1</div>
+        <div class="proc-title">填寫諮詢表單</div>
+        <p class="proc-desc">告訴我們員工人數、日文程度與培訓目標</p>
+      </div>
+      <div class="proc" data-r style="transition-delay:.13s">
+        <div class="proc-bubble">2</div>
+        <div class="proc-title">顧問評估提案</div>
+        <p class="proc-desc">根據需求提供客製化課程組合與報價</p>
+      </div>
+      <div class="proc" data-r style="transition-delay:.20s">
+        <div class="proc-bubble">3</div>
+        <div class="proc-title">確認方案開課</div>
+        <p class="proc-desc">完成合約與分班測驗，安排正式開課時程</p>
+      </div>
+      <div class="proc" data-r style="transition-delay:.27s">
+        <div class="proc-bubble">4</div>
+        <div class="proc-title">成效追蹤回報</div>
+        <p class="proc-desc">定期學習進度報告，確保培訓可見成果</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━  ⑤ 聯絡表單  ━━━━━━━━━━━━━━━━ -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+
+      <!-- Left info -->
+      <div class="contact-info" data-r=l>
+        <div class="eyebrow">免費企業諮詢</div>
+        <h2 class="h2">開始你的企業<br>日文培訓計畫</h2>
+        <p class="contact-lead">任何培訓規劃或線上課程服務，歡迎填寫表單，我們的顧問會在 1 個工作天內與您聯繫，規劃最適合的方案。</p>
+        <a href="mailto:biz@nii.school" class="contact-email-box">
+          <div class="cem-icon">✉️</div>
+          <div>
+            <div class="cem-label">企業洽詢信箱</div>
+            <div class="cem-val">biz@nii.school</div>
+          </div>
+        </a>
+        <div class="contact-proofs">
+          <div class="cproof"><div class="cproof-dot"></div>台積電・曉數碼・ARTOGO 已採用</div>
+          <div class="cproof"><div class="cproof-dot"></div>最快 2 週完成方案規劃與開課</div>
+          <div class="cproof"><div class="cproof-dot"></div>提供完整學習成效追蹤報告</div>
+        </div>
+      </div>
+
+      <!-- Right form -->
+      <div data-r=r>
+        <div class="form-card">
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="fg-grid">
+
+              <div class="fg">
+                <label class="fl">姓名 <span class="req">*</span></label>
+                <input type="text" class="fi" placeholder="王小明" required>
+              </div>
+              <div class="fg">
+                <label class="fl">公司名稱 <span class="req">*</span></label>
+                <input type="text" class="fi" placeholder="泥日教育股份有限公司" required>
+              </div>
+              <div class="fg">
+                <label class="fl">職稱</label>
+                <input type="text" class="fi" placeholder="人力資源主管">
+              </div>
+              <div class="fg">
+                <label class="fl">Email <span class="req">*</span></label>
+                <input type="email" class="fi" placeholder="you@company.com" required>
+              </div>
+
+              <div class="form-rule"></div>
+
+              <div class="fg full">
+                <label class="fl">想了解哪個課程？（可複選）</label>
+                <div class="fcheck-grid">
+                  <label class="fcheck-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    《全方位日文起步班》<br><span style="color:var(--s400);font-size:12px">文法＋口說，適合零基礎</span>
+                  </label>
+                  <label class="fcheck-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    《1對1・語感練功坊》<br><span style="color:var(--s400);font-size:12px">日籍老師 1 對 1 口說訓練</span>
+                  </label>
+                  <label class="fcheck-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    《職場日文術》<br><span style="color:var(--s400);font-size:12px">商用日文影片課</span>
+                  </label>
+                  <label class="fcheck-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    課程影音授權方案<br><span style="color:var(--s400);font-size:12px">上架至企業自有平台</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="fg full">
+                <label class="fl">預計上課人數</label>
+                <select class="fsel ph" id="sel1">
+                  <option value="" disabled selected>請選擇人數</option>
+                  <option>1 ～ 5 人</option>
+                  <option>6 ～ 15 人</option>
+                  <option>16 ～ 30 人</option>
+                  <option>30 人以上</option>
+                </select>
+              </div>
+              <div class="fg full">
+                <label class="fl">從哪得知泥日企業方案？</label>
+                <select class="fsel ph" id="sel2">
+                  <option value="" disabled selected>請選擇來源</option>
+                  <option>Google 搜尋</option>
+                  <option>社群媒體（FB / IG）</option>
+                  <option>朋友 / 同業推薦</option>
+                  <option>LinkedIn</option>
+                  <option>網路廣告</option>
+                  <option>其他</option>
+                </select>
+              </div>
+
+              <div class="fg full">
+                <label class="fl">其他需求說明</label>
+                <textarea class="fta" placeholder="例如：希望員工在半年內達到可以用日文開視訊會議的程度，目前約 8 人需要培訓..."></textarea>
+              </div>
+
+              <button type="submit" class="fsub">送出諮詢申請 →</button>
+
+              <div class="form-success" id="formSuccess">
+                <div class="form-success-ico">🎉</div>
+                <div class="form-success-title">已收到您的申請！</div>
+                <div class="form-success-sub">顧問將在 1 個工作天內透過 Email 與您聯繫。</div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━  ⑥ 內容授權  ━━━━━━━━━━━━━━━━ -->
+<section class="sec sec-alt" id="licensing">
+  <div class="wrap">
+    <div class="lic-card" data-r>
+      <div>
+        <div class="lic-eyebrow">Content License</div>
+        <h2 class="lic-h2">為企業自有平台<br>注入高品質內容</h2>
+        <p class="lic-desc">泥日教育課程影片授權至企業自有學習平台，供員工內部培訓靈活使用，授權期間不限次數觀看，可無縫整合至現有 LMS 系統。</p>
+        <a href="#contact" class="lic-btn">預購課程方案 →</a>
+      </div>
+      <div class="lic-feats" data-r=r style="transition-delay:.1s">
+        <div class="lic-feat">
+          <div class="lic-feat-ico">🎓</div>
+          <div class="lic-feat-name">全系列課程</div>
+          <div class="lic-feat-desc">三大課程，涵蓋初學到商用日文</div>
+        </div>
+        <div class="lic-feat">
+          <div class="lic-feat-ico">♾️</div>
+          <div class="lic-feat-name">不限次數</div>
+          <div class="lic-feat-desc">授權期間員工可隨時反覆觀看</div>
+        </div>
+        <div class="lic-feat">
+          <div class="lic-feat-ico">📅</div>
+          <div class="lic-feat-name">彈性規劃</div>
+          <div class="lic-feat-desc">依企業行事曆安排培訓節奏</div>
+        </div>
+        <div class="lic-feat">
+          <div class="lic-feat-ico">🎬</div>
+          <div class="lic-feat-name">影片授權</div>
+          <div class="lic-feat-desc">可上架至企業 LMS 平台使用</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━  ⑦ 客戶見證  ━━━━━━━━━━━━━━━━ -->
+<section class="sec testi-sec" id="testimonials">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <div class="eyebrow">客戶見證</div>
+      <h2 class="h2" style="margin-top:12px">他們都選擇了泥日教育</h2>
+      <p class="lead" style="margin-top:12px">來自台積電、曉數碼、ARTOGO 的真實回饋</p>
+    </div>
+  </div>
+
+  <div class="testi-viewport" id="teVP">
+    <div class="testi-track" id="teTrack">
+      <div class="testi-card" data-ti="0">
+        <div class="testi-q">
+          <div class="testi-q-inner">泥日教育提供的課程能幫助同仁在職場工作中真正需要的技能，並且在真實生活之口語磨練。引入語感練功坊後，同仁在與日本客戶的視訊會議中自信大幅提升，不再需要我從旁翻譯。</div>
+        </div>
+        <div class="testi-rule"></div>
+        <div class="testi-foot">
+          <div class="testi-ava-row">
+            <div class="testi-ava">👩</div>
+            <div><div class="testi-name">Sylvia Chen</div><div class="testi-role">人力資源管理部門</div></div>
+          </div>
+          <div class="testi-logo">台積電 TSMC</div>
+        </div>
+      </div>
+      <div class="testi-card" data-ti="1">
+        <div class="testi-q">
+          <div class="testi-q-inner">影片授權方案讓我們可以彈性排入內部培訓計畫，員工課後複習率遠比以前高很多。起步班的雙師模式非常有效，員工六個月內就能用日文完成基礎商務郵件往來，進步肉眼可見。</div>
+        </div>
+        <div class="testi-rule"></div>
+        <div class="testi-foot">
+          <div class="testi-ava-row">
+            <div class="testi-ava">👨</div>
+            <div><div class="testi-name">Eddie Lin</div><div class="testi-role">Learning & Development</div></div>
+          </div>
+          <div class="testi-logo">曉數碼</div>
+        </div>
+      </div>
+      <div class="testi-card" data-ti="2">
+        <div class="testi-q">
+          <div class="testi-q-inner">職場日文術的商用情境設計非常實用，員工上完課就能直接應用在與日本合作夥伴的溝通上，投資報酬率非常高，強力推薦給有日文培訓需求的企業 HR。</div>
+        </div>
+        <div class="testi-rule"></div>
+        <div class="testi-foot">
+          <div class="testi-ava-row">
+            <div class="testi-ava">👩</div>
+            <div><div class="testi-name">Christine Wang</div><div class="testi-role">培訓專員</div></div>
+          </div>
+          <div class="testi-logo">ARTOGO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testi-controls">
+    <button class="te-btn" onclick="teNav(-1)">‹</button>
+    <button class="te-dot on"  data-tidx="0" onclick="teGo(0)"></button>
+    <button class="te-dot"     data-tidx="1" onclick="teGo(1)"></button>
+    <button class="te-dot"     data-tidx="2" onclick="teGo(2)"></button>
+    <button class="te-btn" onclick="teNav(1)">›</button>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━  FOOTER  ━━━━━━━━━━━━━━━━ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="ftr-mark">泥日</div>
+        <div class="ftr-name">泥日教育 Nii Education</div>
+        <p class="ftr-tagline">讓日文成為企業競爭力的關鍵武器——專為企業 HR 設計的客製化日文內訓解決方案。</p>
+        <div class="ftr-socials" style="margin-top:20px">
+          <a href="#" class="ftr-soc" title="Facebook">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="ftr-soc" title="Instagram">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="ftr-soc" title="LINE">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.14 2 11.25c0 2.75 1.33 5.22 3.43 6.92-.06.21-.4 1.38-.46 1.61-.07.27.1.27.21.2L7.07 18.74c.56.16 1.15.25 1.76.27.16.01.32.01.47.01C15.52 19.02 22 15.34 22 11.25 22 6.14 17.52 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="ftr-col-h">課程方案</div>
+        <div class="ftr-links">
+          <a href="#courses" class="ftr-link">全方位日文起步班</a>
+          <a href="#courses" class="ftr-link">1 對 1 語感練功坊</a>
+          <a href="#courses" class="ftr-link">職場日文術</a>
+          <a href="#licensing" class="ftr-link">課程影音授權</a>
+        </div>
+      </div>
+      <div>
+        <div class="ftr-col-h">聯絡我們</div>
+        <div class="ftr-links">
+          <a href="mailto:biz@nii.school" class="ftr-link ftr-email">biz@nii.school</a>
+          <a href="https://nii.school/" target="_blank" class="ftr-link">nii.school →</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="ftr-copy">© 2026 泥日教育 Nii Education. All rights reserved.</div>
+      <div class="ftr-copy">企業洽詢：<a href="mailto:biz@nii.school" class="ftr-email">biz@nii.school</a></div>
+    </div>
+  </div>
+</footer>
+
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- ━━━━━━━━━━━━━━━━  JS  ━━━━━━━━━━━━━━━━ -->
+<script>
+/* scroll reveal */
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis') }),
+  { threshold: .07, rootMargin: '0px 0px -28px 0px' }
+);
+document.querySelectorAll('[data-r]').forEach(el => obs.observe(el));
+
+/* nav + back-to-top */
+const nav = document.getElementById('mainNav');
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('up', scrollY > 24);
+  btt.classList.toggle('show', scrollY > 600);
+}, { passive: true });
+
+/* checkbox cards */
+function toggleCheck(label) {
+  const cb = label.querySelector('input[type=checkbox]');
+  // let the default toggle happen, then sync class
+  setTimeout(() => label.classList.toggle('on', cb.checked), 0);
+}
+
+/* ── select placeholder colour ──
+   Elements already have class .ph (placeholder state).
+   On change, remove .ph when a real value is chosen. */
+document.querySelectorAll('.fsel').forEach(sel => {
+  sel.addEventListener('change', function () {
+    this.classList.toggle('ph', !this.value);
+  });
+});
+
+/* form submit */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.fsub');
+  btn.disabled = true;
+  btn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation:spin .8s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>送出中…</span>';
+  setTimeout(() => {
+    // hide all grid children except the success panel
+    const grid = e.target.querySelector('.fg-grid');
+    [...grid.children].forEach(el => {
+      if (el.id !== 'formSuccess') el.style.display = 'none';
+    });
+    const suc = document.getElementById('formSuccess');
+    suc.style.display = 'flex';
+    suc.style.flexDirection = 'column';
+    suc.style.alignItems = 'center';
+  }, 900);
+}
+
+/* ── testimonial carousel ── */
+let teIdx = 0;
+const teCards = document.querySelectorAll('.testi-card');
+const teDots  = document.querySelectorAll('.te-dot');
+const teTrack = document.getElementById('teTrack');
+const teVP    = document.getElementById('teVP');
+
+function teRender() {
+  const vw = teVP.offsetWidth;
+  const cardW = Math.min(420, vw - 64);
+  const gap = 24;
+  const offset = vw / 2 - cardW / 2 - teIdx * (cardW + gap);
+  teTrack.style.transform = `translateX(${offset}px)`;
+  teCards.forEach((c, i) => c.classList.toggle('on', i === teIdx));
+  teDots.forEach((d, i) => d.classList.toggle('on', i === teIdx));
+}
+
+function teGo(i) {
+  teIdx = ((i % teCards.length) + teCards.length) % teCards.length;
+  teRender();
+}
+function teNav(d) { teGo(teIdx + d); }
+
+window.addEventListener('resize', teRender);
+teRender();
+const teTimer = setInterval(() => teNav(1), 5200);
+
+/* touch swipe */
+let tx0 = 0;
+teVP.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX }, { passive: true });
+teVP.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx0;
+  if (Math.abs(dx) > 48) teNav(dx < 0 ? 1 : -1);
+}, { passive: true });
+</script>
+</body>
+</html>
