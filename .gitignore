@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Claude Code
+.claude/
+CLAUDE.md
+
+# Browser automation cache
+.playwright-mcp/
+
+# Other projects in this workspace (not part of this repo)
+certificate-maker.html
+nii-checkout-complete.html
+nii-school-app/
+
+# Alternate / unused brand assets
+nii.png
+nii_logo.png
+上課證書範本.png
