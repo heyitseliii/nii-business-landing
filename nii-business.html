@@ -83,7 +83,7 @@ ul,ol{list-style:none}
 .nav.up{box-shadow:0 4px 24px rgba(0,0,0,.12)}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:10px}
-.logo-mark{width:38px;height:38px;background:rgba(255,255,255,.28);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;font-size:14px;font-weight:900;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.logo-img{height:36px;width:auto;display:block}
 .logo-name{font-size:16px;font-weight:800;color:#fff;letter-spacing:-.01em}
 .logo-sub{font-size:13px;color:rgba(255,255,255,.72);font-weight:500;letter-spacing:.07em;text-transform:uppercase;margin-top:1px}
 .logo-sep{width:1px;height:18px;background:rgba(255,255,255,.3);margin:0 8px}
@@ -91,7 +91,7 @@ ul,ol{list-style:none}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav-a{font-size:14px;font-weight:600;color:rgba(255,255,255,.88);padding:7px 14px;border-radius:8px;transition:color .2s,background .2s}
 .nav-a:hover{color:#fff;background:rgba(255,255,255,.18)}
-.nav-cta{background:#fff;color:var(--p-deep);padding:10px 24px;border-radius:100px;font-size:14px;font-weight:700;border:none;margin-left:8px;box-shadow:0 2px 12px rgba(0,0,0,.12);transition:all .2s}
+.nav-cta{background:#fff;color:var(--p-deep);padding:10px 24px;border-radius:100px;font-size:14px;font-weight:700;border:none;margin-left:8px;box-shadow:0 2px 12px rgba(0,0,0,.12);transition:all .2s;white-space:nowrap}
 .nav-cta:hover{background:rgba(255,255,255,.92);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
 
 /* ══════════════════════════════════════
@@ -150,9 +150,13 @@ ul,ol{list-style:none}
 
 /* ═══ HERO V3 (banner with overlay CTA) ═══ */
 .hero-v3{padding:68px 0 0;background:#fff;position:relative}
-.hero-v3-banner{position:relative;width:100%;overflow:hidden;background:#EAF2F0}
-.hero-v3-banner img{width:100%;height:auto;display:block;max-height:680px;object-fit:cover;object-position:center}
-.hero-v3-overlay{position:absolute;left:0;right:0;bottom:6%;display:flex;flex-direction:column;align-items:flex-start;padding-left:calc(50% - 540px + 507px);gap:18px;z-index:3;pointer-events:none}
+.hero-v3-banner{position:relative;width:100%;aspect-ratio:1619/800;overflow:hidden;background:#EAF2F0}
+.hero-v3-banner picture,.hero-v3-banner img{width:100%;height:100%;display:block}
+.hero-v3-banner img{object-fit:cover;object-position:center top}
+.hero-v3-overlay{position:absolute;top:calc(65% + 24px);left:41%;display:flex;flex-direction:column;align-items:flex-start;gap:10px;z-index:3;pointer-events:none}
+@media (min-width:1024px){
+  .hero-v3-overlay{top:calc(65% + 40px)}
+}
 .hero-v3-overlay > *{pointer-events:auto}
 .hero-v3-buttons{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-start}
 .hero-v3-buttons .btn-outline{background:#fff;border-color:#fff;color:var(--s800)}
@@ -160,9 +164,14 @@ ul,ol{list-style:none}
 .hero-v3-proof{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-start;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:100px;padding:10px 22px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
 .hero-v3-proof .proof-item{font-size:13.5px}
 
-@media (max-width:900px){
-  .hero-v3-overlay{position:static;padding:28px 24px 40px;background:#fff;gap:14px}
-  .hero-v3-proof{background:transparent;box-shadow:none;padding:0}
+@media (max-width:767px){
+  .hero-v3-banner{aspect-ratio:auto}
+  .hero-v3-banner img{height:auto}
+  .hero-v3-overlay{top:auto;bottom:5%;left:16px;right:16px;align-items:stretch;gap:10px;padding:0;background:transparent}
+  .hero-v3-buttons{flex-direction:column;width:100%;gap:10px}
+  .hero-v3-buttons > *{width:100%;justify-content:center;text-align:center}
+  .hero-v3-proof{width:100%;justify-content:center;flex-wrap:nowrap;gap:10px;padding:8px 14px;font-size:12px}
+  .hero-v3-proof .proof-item{font-size:12px;white-space:nowrap}
 }
 
 /* ══════════════════════════════════════
@@ -213,7 +222,8 @@ ul,ol{list-style:none}
    PROCESS  ④
 ══════════════════════════════════════ */
 .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
-.proc{border-radius:var(--rl);overflow:hidden;border:1.5px solid var(--s200);box-shadow:var(--sh);transition:box-shadow .3s,transform .3s cubic-bezier(.22,1,.36,1)}
+.proc{border-radius:var(--rl);overflow:hidden;border:1.5px solid var(--s200);box-shadow:var(--sh);background:#fff;display:flex;flex-direction:column;transition:box-shadow .3s,transform .3s cubic-bezier(.22,1,.36,1)}
+.proc-body{flex:1}
 .proc:hover{box-shadow:var(--shg);transform:translateY(-4px)}
 .proc-head{background:var(--p-deep);padding:14px 18px;display:flex;align-items:center;gap:10px}
 .proc-head-num{font-size:20px;font-weight:900;color:#fff;flex-shrink:0;line-height:1}
@@ -359,6 +369,32 @@ ul,ol{list-style:none}
 .btt:hover{transform:translateY(-3px)}
 
 /* ══════════════════════════════════════
+   SUCCESS MODAL
+══════════════════════════════════════ */
+.modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.modal[hidden]{display:none}
+.modal.show{opacity:1;pointer-events:auto}
+.modal-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.modal-card{position:relative;background:#fff;border-radius:var(--rxl);padding:44px 40px 36px;max-width:480px;width:100%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.18),0 8px 24px rgba(0,0,0,.08);transform:translateY(12px) scale(.96);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.modal.show .modal-card{transform:translateY(0) scale(1)}
+.modal-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:none;background:transparent;color:var(--s400);font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,color .2s}
+.modal-close:hover{background:var(--s100);color:var(--s700)}
+.modal-icon{width:64px;height:64px;border-radius:50%;background:var(--p-pale);color:var(--p-deep);display:flex;align-items:center;justify-content:center;margin:4px auto 20px;border:1px solid rgba(0,209,178,.25)}
+.modal-icon svg{width:32px;height:32px}
+.modal-title{font-size:22px;font-weight:800;color:var(--s900);letter-spacing:-.01em;margin-bottom:10px;line-height:1.35}
+.modal-desc{font-size:14.5px;color:var(--s500);line-height:1.78;margin:0 auto 24px;max-width:380px}
+.modal-desc strong{color:var(--p-deep);font-weight:700}
+.modal-meta{background:var(--s50);border:1px solid var(--s200);border-radius:var(--r);padding:14px 18px;margin-bottom:24px;text-align:left;display:flex;flex-direction:column;gap:8px}
+.modal-meta-item{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13.5px}
+.modal-meta-label{color:var(--s500);font-weight:600}
+.modal-meta-val{color:var(--s800);font-weight:600}
+.modal-meta-val.link{color:var(--p-deep);transition:color .2s}
+.modal-meta-val.link:hover{color:#20707D;text-decoration:underline}
+.modal-btn{display:block;width:100%;padding:13px;background:var(--p-deep);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;box-shadow:0 4px 16px var(--p-glow);transition:all .2s}
+.modal-btn:hover{background:#20707D;transform:translateY(-2px);box-shadow:0 8px 24px var(--p-glow2)}
+body.modal-open{overflow:hidden}
+
+/* ══════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════ */
 @media(max-width:1060px){
@@ -368,6 +404,10 @@ ul,ol{list-style:none}
 }
 @media(max-width:768px){
   .nav-a{display:none}
+  .nav-inner{padding:0 16px}
+  .nav-cta{padding:8px 16px;font-size:13px;margin-left:4px}
+  .logo-sep,.logo-biz{display:none}
+  .logo-img{height:32px}
   .feat-grid,.courses-grid{grid-template-columns:1fr}
   .process-steps{grid-template-columns:1fr 1fr;gap:24px}
   .process-steps::before{display:none}
@@ -378,6 +418,10 @@ ul,ol{list-style:none}
   .sec{padding:64px 20px}
   .hero{padding:108px 20px 64px}
 }
+@media(max-width:480px){
+  .testi-card{flex:0 0 320px;padding:24px}
+  .process-steps{grid-template-columns:1fr;gap:14px}
+}
 </style>
 </head>
 <body>
@@ -386,11 +430,7 @@ ul,ol{list-style:none}
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
     <div class="logo">
-      <div class="logo-mark">泥日</div>
-      <div>
-        <div class="logo-name">泥日教育</div>
-        <div class="logo-sub">Nii Education</div>
-      </div>
+      <img src="images/nii-logo-white.png" alt="泥日教育 NII SCHOOL" class="logo-img">
       <div class="logo-sep"></div>
       <div class="logo-biz">Business</div>
     </div>
@@ -406,7 +446,10 @@ ul,ol{list-style:none}
 <!-- ━━━━━━━━━━━━━━━━  ① HERO  ━━━━━━━━━━━━━━━━ -->
 <section class="hero-v3" id="home">
   <div class="hero-v3-banner" data-r>
-    <img src="images/hero-banner.jpg" alt="泥日教育 Nii School">
+    <picture>
+      <source media="(max-width:767px)" srcset="images/hero-banner-mobile.jpg">
+      <img src="images/hero-banner-desktop.jpg" alt="泥日教育 Nii School">
+    </picture>
     <div class="hero-v3-overlay">
       <div class="hero-v3-buttons" data-r>
         <a href="#contact" class="btn-fill">
@@ -432,27 +475,27 @@ ul,ol{list-style:none}
   <div class="wrap">
     <div class="sec-head center" data-r>
       <div class="eyebrow">為什麼選擇我們</div>
-      <h2 class="h2" style="margin-top:12px">專為企業設計的日文培訓體系</h2>
-      <p class="lead" style="margin-top:12px">不是補習班，而是可量化成效的企業培訓夥伴</p>
+      <h2 class="h2" style="margin-top:12px">能立即應用的日語能力</h2>
+      <p class="lead" style="margin-top:12px">獨創文法＋口說雙軌教學，最快提升職場日文實戰力</p>
     </div>
     <div class="feat-grid">
       <div class="feat-card" data-r style="transition-delay:.06s">
         <div class="feat-num">01</div>
         <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-        <div class="feat-title">客製化課程規劃</div>
-        <p class="feat-desc">依照員工程度、產業背景與企業需求量身設計學習路徑，確保每一節課都切中實際工作所需。</p>
+        <div class="feat-title">中文教文法</div>
+        <p class="feat-desc">台籍教師教授文法，精準解釋中文和日文的語感差異，促進理解。</p>
       </div>
       <div class="feat-card" data-r style="transition-delay:.13s">
         <div class="feat-num">02</div>
         <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="feat-title">台日雙師實戰師資</div>
-        <p class="feat-desc">台灣老師建立文法基礎，日本籍老師進行全日文口說實戰訓練，雙軌並進打造真實溝通能力。</p>
+        <div class="feat-title">日師帶口說</div>
+        <p class="feat-desc">從初級班導入日師教學，提供「語言學校」般的全日文環境，有感提升發音、聽力、口說表達，打造日語溝通力。</p>
       </div>
       <div class="feat-card" data-r style="transition-delay:.20s">
         <div class="feat-num">03</div>
         <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
-        <div class="feat-title">透明成效追蹤報告</div>
-        <p class="feat-desc">定期提供每位學員學習進度報告，HR 可即時掌握培訓成效，讓培訓預算的 ROI 清晰可見。</p>
+        <div class="feat-title">超級小班制</div>
+        <p class="feat-desc">口說課初級班最多五人、進階班每班一人，確保充分的口說時間，為市面上最小的班級規模。</p>
       </div>
     </div>
   </div>
@@ -493,7 +536,7 @@ ul,ol{list-style:none}
           <div class="clevel">有文法基礎</div>
         </div>
         <div class="cbody">
-          <div class="ctitle">《1對1・語感練功坊》</div>
+          <div class="ctitle">《1對1・日文語感練功坊》</div>
           <div class="csub">Speaking Mastery</div>
           <p class="cdesc">日籍老師 1 對 1 全日文訓練，逐句修正文法錯誤及台式日文，擴充表達豐富度與語感精準度。</p>
           <div class="ctags"><span class="cchip">1 對 1 專屬</span><span class="cchip">日籍老師</span><span class="cchip">即時修正</span></div>
@@ -517,7 +560,7 @@ ul,ol{list-style:none}
           <p class="cdesc">商用敬語、電話、書信、簡報等情境課程，搭配道謝、道歉、催促等實例，立即可用於工作。</p>
           <div class="ctags"><span class="cchip">影片課程</span><span class="cchip">不限次數</span><span class="cchip">可授權上架</span></div>
           <ul class="clist">
-            <li><span class="cli-check">✓</span>涵蓋電話・書信・簡報情境</li>
+            <li><span class="cli-check">✓</span>電話・書信・簡報的實戰模板</li>
             <li><span class="cli-check">✓</span>可隨時觀看，不限次數</li>
             <li><span class="cli-check">✓</span>支援企業平台影片授權</li>
           </ul>
@@ -534,8 +577,8 @@ ul,ol{list-style:none}
   <div class="wrap">
     <div class="sec-head center" data-r>
       <div class="eyebrow">合作流程</div>
-      <h2 class="h2" style="margin-top:12px">4 步驟，輕鬆啟動企業培訓</h2>
-      <p class="lead" style="margin-top:12px">任何問題歡迎與我們洽談，有任何需求都優先處理</p>
+      <h2 class="h2" style="margin-top:12px">4 步驟，輕鬆開始上課</h2>
+      <p class="lead" style="margin-top:12px">任何問題或需求都歡迎與我們洽談</p>
     </div>
     <div class="process-steps">
       <div class="proc" data-r style="transition-delay:.06s">
@@ -545,10 +588,10 @@ ul,ol{list-style:none}
           <span class="proc-head-arrow">»</span>
         </div>
         <div class="proc-body">
-          <p class="proc-desc">告訴我們員工人數、日文程度與培訓目標，填寫下方表單即可開始。</p>
+          <p class="proc-desc">告訴我們預計上課人數、日文程度與培訓目標，填寫下方表單即可開始。</p>
           <div class="proc-note">
             <div class="proc-note-label">⊕ 小提醒</div>
-            <div class="proc-note-text">表單填寫越詳細，顧問能為您規劃越精準的方案</div>
+            <div class="proc-note-text">若員工程度每人不同，可以同時諮詢不同班級唷！</div>
           </div>
         </div>
       </div>
@@ -559,10 +602,10 @@ ul,ol{list-style:none}
           <span class="proc-head-arrow">»</span>
         </div>
         <div class="proc-body">
-          <p class="proc-desc">顧問將在 1 個工作天內聯繫您，根據需求提供客製化課程組合與報價。</p>
+          <p class="proc-desc">顧問將在三個工作天內聯繫您，根據需求提供客製化課程組合與報價。</p>
           <div class="proc-note">
             <div class="proc-note-label">⊕ 時程說明</div>
-            <div class="proc-note-text">提案討論完成後，最快 2 週內可正式開課</div>
+            <div class="proc-note-text">如遇課程有日文程度限制，將為員工安排入班程度測驗</div>
           </div>
         </div>
       </div>
@@ -573,11 +616,7 @@ ul,ol{list-style:none}
           <span class="proc-head-arrow">»</span>
         </div>
         <div class="proc-body">
-          <p class="proc-desc">完成合約簽署與員工分班程度測驗，安排正式開課時程。</p>
-          <div class="proc-note">
-            <div class="proc-note-label">⊕ 重要提醒</div>
-            <div class="proc-note-text">簽約後才正式確認開課日期，建議提前預排員工行程</div>
-          </div>
+          <p class="proc-desc">完成合約簽署，安排正式開課時程。</p>
         </div>
       </div>
       <div class="proc" data-r style="transition-delay:.27s">
@@ -589,7 +628,7 @@ ul,ol{list-style:none}
           <p class="proc-desc">定期提供學習進度報告，追蹤員工成長數據，確保培訓投資有可見成果。</p>
           <div class="proc-note">
             <div class="proc-note-label">⊕ 報告內容</div>
-            <div class="proc-note-text">出勤率、完課率、測驗成績，完整呈現培訓成效</div>
+            <div class="proc-note-text">出席率、作業繳交率、測驗成績，完整呈現培訓成效</div>
           </div>
         </div>
       </div>
@@ -606,7 +645,7 @@ ul,ol{list-style:none}
       <div class="contact-info" data-r=l>
         <div class="eyebrow">免費企業諮詢</div>
         <h2 class="h2">開始你的企業<br>日文培訓計畫</h2>
-        <p class="contact-lead">任何培訓規劃或線上課程服務，歡迎填寫表單，我們的顧問會在 1 個工作天內與您聯繫，規劃最適合的方案。</p>
+        <p class="contact-lead">任何培訓規劃或線上課程服務，歡迎填寫表單，我們的顧問會在三個工作天內與您聯繫，規劃最適合的方案。</p>
         <a href="mailto:biz@nii.school" class="contact-email-box">
           <div class="cem-icon">✉️</div>
           <div>
@@ -629,53 +668,53 @@ ul,ol{list-style:none}
 
               <div class="fg">
                 <label class="fl">姓名 <span class="req">*</span></label>
-                <input type="text" class="fi" placeholder="王小明" required>
-              </div>
-              <div class="fg">
-                <label class="fl">公司名稱 <span class="req">*</span></label>
-                <input type="text" class="fi" placeholder="泥日教育股份有限公司" required>
+                <input type="text" class="fi" name="name" placeholder="王小明" required>
               </div>
               <div class="fg">
                 <label class="fl">職稱</label>
-                <input type="text" class="fi" placeholder="人力資源主管">
+                <input type="text" class="fi" name="title" placeholder="人力資源主管">
+              </div>
+              <div class="fg full">
+                <label class="fl">公司名稱 <span class="req">*</span></label>
+                <input type="text" class="fi" name="company" placeholder="泥日教育股份有限公司" required>
               </div>
               <div class="fg full">
                 <label class="fl">聯絡電話</label>
-                <input type="tel" class="fi" placeholder="02-1234-5678 或 0912-345-678">
+                <input type="tel" class="fi" name="phone" placeholder="02-1234-5678">
               </div>
               <div class="fg full">
                 <label class="fl">Email <span class="req">*</span></label>
-                <input type="email" class="fi" placeholder="you@company.com" required>
+                <input type="email" class="fi" name="email" placeholder="you@company.com" required>
               </div>
 
               <div class="form-rule"></div>
 
               <div class="fg full">
                 <label class="fl">想了解哪個課程？（可複選）</label>
-                <div class="fcheck-grid">
+                <div class="fcheck-grid" id="courseGrid">
                   <label class="fcheck-item" onclick="toggleCheck(this)">
-                    <input type="checkbox">
+                    <input type="checkbox" name="courses" value="《全方位日文起步班》">
                     <div class="fcheck-text">
                       <span class="fcheck-name">《全方位日文起步班》</span>
                       <span class="fcheck-note">文法＋口說，適合零基礎</span>
                     </div>
                   </label>
                   <label class="fcheck-item" onclick="toggleCheck(this)">
-                    <input type="checkbox">
+                    <input type="checkbox" name="courses" value="《1對1・日文語感練功坊》">
                     <div class="fcheck-text">
-                      <span class="fcheck-name">《1對1・語感練功坊》</span>
+                      <span class="fcheck-name">《1對1・日文語感練功坊》</span>
                       <span class="fcheck-note">日籍老師 1 對 1 口說訓練</span>
                     </div>
                   </label>
                   <label class="fcheck-item" onclick="toggleCheck(this)">
-                    <input type="checkbox">
+                    <input type="checkbox" name="courses" value="《職場日文術》">
                     <div class="fcheck-text">
                       <span class="fcheck-name">《職場日文術》</span>
                       <span class="fcheck-note">商用日文影片課</span>
                     </div>
                   </label>
                   <label class="fcheck-item" onclick="toggleCheck(this)">
-                    <input type="checkbox">
+                    <input type="checkbox" name="courses" value="課程影音授權方案">
                     <div class="fcheck-text">
                       <span class="fcheck-name">課程影音授權方案</span>
                       <span class="fcheck-note">上架至企業自有平台</span>
@@ -686,7 +725,7 @@ ul,ol{list-style:none}
 
               <div class="fg full">
                 <label class="fl">預計上課人數</label>
-                <select class="fsel ph" id="sel1">
+                <select class="fsel ph" id="sel1" name="headcount">
                   <option value="" disabled selected>請選擇人數</option>
                   <option>1 ～ 5 人</option>
                   <option>6 ～ 15 人</option>
@@ -695,8 +734,8 @@ ul,ol{list-style:none}
                 </select>
               </div>
               <div class="fg full">
-                <label class="fl">從哪得知泥日企業方案？</label>
-                <select class="fsel ph" id="sel2">
+                <label class="fl">從哪裡得知泥日教育？</label>
+                <select class="fsel ph" id="sel2" name="source">
                   <option value="" disabled selected>請選擇來源</option>
                   <option>Google 搜尋</option>
                   <option>社群媒體（FB / IG）</option>
@@ -709,16 +748,10 @@ ul,ol{list-style:none}
 
               <div class="fg full">
                 <label class="fl">其他需求說明</label>
-                <textarea class="fta" placeholder="例如：希望員工在半年內達到可以用日文開視訊會議的程度，目前約 8 人需要培訓..."></textarea>
+                <textarea class="fta" name="notes" placeholder="例如：希望員工在半年內達到可以用日文開視訊會議的程度，目前約 8 人需要培訓..."></textarea>
               </div>
 
               <button type="submit" class="fsub">送出諮詢申請 →</button>
-
-              <div class="form-success" id="formSuccess">
-                <div class="form-success-ico">🎉</div>
-                <div class="form-success-title">已收到您的申請！</div>
-                <div class="form-success-sub">顧問將在 1 個工作天內透過 Email 與您聯繫。</div>
-              </div>
 
             </div>
           </form>
@@ -741,13 +774,13 @@ ul,ol{list-style:none}
         <div class="lic-eyebrow">Content License</div>
         <h2 class="lic-h2">為企業自有平台<br>注入高品質內容</h2>
         <p class="lic-desc">泥日教育課程影片授權至企業自有學習平台，供員工內部培訓靈活使用，授權期間不限次數觀看，可無縫整合至現有 LMS 系統。</p>
-        <a href="#contact" class="lic-btn">預購課程方案 →</a>
+        <a href="#contact" class="lic-btn">洽詢影片授權 →</a>
       </div>
       <div class="lic-feats" data-r=r style="transition-delay:.1s">
         <div class="lic-feat">
           <div class="lic-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-          <div class="lic-feat-name">全系列課程</div>
-          <div class="lic-feat-desc">三大課程，涵蓋初學到商用日文</div>
+          <div class="lic-feat-name">跨程度課程</div>
+          <div class="lic-feat-desc">涵蓋初學到商用日文</div>
         </div>
         <div class="lic-feat">
           <div class="lic-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
@@ -859,6 +892,30 @@ ul,ol{list-style:none}
 
 <button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
+<!-- ━━━━━━━━━━━━━━━━  SUCCESS MODAL  ━━━━━━━━━━━━━━━━ -->
+<div class="modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-card" role="document">
+    <button class="modal-close" type="button" aria-label="關閉" onclick="closeModal()">×</button>
+    <div class="modal-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h3 class="modal-title" id="modalTitle">已收到您的諮詢申請</h3>
+    <p class="modal-desc">感謝您的來信，我們的顧問將在<strong>三個工作天內</strong>透過 Email 與您聯繫，為您規劃最適合的企業日文培訓方案。</p>
+    <div class="modal-meta">
+      <div class="modal-meta-item">
+        <span class="modal-meta-label">確認信</span>
+        <span class="modal-meta-val">已寄送至您填寫的 Email</span>
+      </div>
+      <div class="modal-meta-item">
+        <span class="modal-meta-label">緊急聯繫</span>
+        <a href="mailto:biz@nii.school" class="modal-meta-val link">biz@nii.school</a>
+      </div>
+    </div>
+    <button class="modal-btn" type="button" onclick="closeModal()">了解，回到首頁</button>
+  </div>
+</div>
+
 <!-- ━━━━━━━━━━━━━━━━  JS  ━━━━━━━━━━━━━━━━ -->
 <script>
 /* scroll reveal */
@@ -892,24 +949,80 @@ document.querySelectorAll('.fsel').forEach(sel => {
   });
 });
 
+/* ── Apps Script Web App URL ──
+   部署後填入 Web App URL；空字串時表單會走 demo 模式（不實際寄信）。 */
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxZL9_a_r5aZfYx2eAgZfGQgYtI3bC07ht-rGJRsEy8aJPzwc1F58HcV9Yyz79g2QLw/exec';
+
 /* form submit */
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.fsub');
+  const form = e.target;
+  const btn = form.querySelector('.fsub');
+  const originalLabel = btn.innerHTML;
+
   btn.disabled = true;
   btn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation:spin .8s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>送出中…</span>';
-  setTimeout(() => {
-    // hide all grid children except the success panel
-    const grid = e.target.querySelector('.fg-grid');
-    [...grid.children].forEach(el => {
-      if (el.id !== 'formSuccess') el.style.display = 'none';
-    });
-    const suc = document.getElementById('formSuccess');
-    suc.style.display = 'flex';
-    suc.style.flexDirection = 'column';
-    suc.style.alignItems = 'center';
-  }, 900);
+
+  // 蒐集表單資料
+  const fd = new FormData(form);
+  const payload = {
+    name:      fd.get('name')      || '',
+    title:     fd.get('title')     || '',
+    company:   fd.get('company')   || '',
+    phone:     fd.get('phone')     || '',
+    email:     fd.get('email')     || '',
+    courses:   fd.getAll('courses'),
+    headcount: fd.get('headcount') || '',
+    source:    fd.get('source')    || '',
+    notes:     fd.get('notes')     || ''
+  };
+
+  try {
+    if (FORM_ENDPOINT) {
+      // text/plain 避免 CORS preflight；Apps Script 可從 e.postData.contents 解析
+      await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+    } else {
+      console.log('[demo mode] form payload:', payload);
+      await new Promise(r => setTimeout(r, 600));
+    }
+    openModal();
+    form.reset();
+    document.querySelectorAll('.fcheck-item.on').forEach(el => el.classList.remove('on'));
+    document.querySelectorAll('.fsel').forEach(s => s.classList.add('ph'));
+  } catch (err) {
+    console.error(err);
+    alert('送出失敗，請稍後再試或直接來信 biz@nii.school');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalLabel;
+  }
 }
+
+/* ── Success modal ── */
+const modal = document.getElementById('successModal');
+function openModal() {
+  // 補償捲軸寬度避免內容因 overflow:hidden 跳動
+  const sbw = window.innerWidth - document.documentElement.clientWidth;
+  if (sbw > 0) document.body.style.paddingRight = sbw + 'px';
+  modal.hidden = false;
+  void modal.offsetWidth;
+  modal.classList.add('show');
+  document.body.classList.add('modal-open');
+}
+function closeModal() {
+  modal.classList.remove('show');
+  document.body.classList.remove('modal-open');
+  document.body.style.paddingRight = '';
+  setTimeout(() => { modal.hidden = true; }, 250);
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+});
 
 /* ── testimonial carousel ── */
 let teIdx = 0;
