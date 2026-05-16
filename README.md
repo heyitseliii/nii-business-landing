@@ -2,7 +2,7 @@
 
 這是泥日教育 B2B 企業內訓的一頁式 Landing Page，供內部同事預覽、測試與提供修改意見。
 
-**預覽連結** → [heyitseliii.github.io/nii-business-landing/nii-business.html](https://heyitseliii.github.io/nii-business-landing/nii-business.html)
+**預覽連結** → [niischooleli.github.io/nii-business-landing/nii-business.html](https://niischooleli.github.io/nii-business-landing/nii-business.html)
 
 ---
 
@@ -26,7 +26,7 @@
 
 ### 開一個 Issue
 
-1. 前往頁面上方的 [Issues](https://github.com/heyitseliii/nii-business-landing/issues) 分頁
+1. 前往頁面上方的 [Issues](https://github.com/niischooleli/nii-business-landing/issues) 分頁
 2. 點選右上角的綠色按鈕「**New issue**」
 3. 填寫標題與內容（說明在哪個區塊、看到什麼問題、希望如何調整）
 4. 點「**Submit new issue**」送出
