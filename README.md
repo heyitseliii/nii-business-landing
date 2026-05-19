@@ -2,7 +2,17 @@
 
 這是泥日教育 B2B 企業內訓的一頁式 Landing Page，供內部同事預覽、測試與提供修改意見。
 
-**預覽連結** → [niischooleli.github.io/nii-business-landing/nii-business.html](https://niischooleli.github.io/nii-business-landing/nii-business.html)
+## 線上版本
+
+| 環境 | 網址 | 用途 |
+|------|------|------|
+| 正式站（Teachify） | [nii.school/business](https://nii.school/business) | 對外可分享，但目前 `noindex` 中 |
+| 預覽站（GitHub Pages） | [niischool-tw.github.io/nii-business-landing/nii-business.html](https://niischool-tw.github.io/nii-business-landing/nii-business.html) | 此 repo 的最新 HTML 直接渲染 |
+
+> ⚠️ 目前 HTML head 帶有 `<meta name="robots" content="noindex, nofollow">`，搜尋引擎與 AI 爬蟲不會索引此頁。
+> 正式對外公開時，請把這行 meta 拿掉再重新 push（GH Pages 會自動更新）並重新部署 Teachify `/business`。
+>
+> Teachify 版本的圖片仍從 GitHub Pages 的 `images/` 載入，此 repo 是圖片資源來源，請勿任意刪除 `images/` 內檔案。
 
 ---
 
@@ -26,7 +36,7 @@
 
 ### 開一個 Issue
 
-1. 前往頁面上方的 [Issues](https://github.com/niischooleli/nii-business-landing/issues) 分頁
+1. 前往頁面上方的 [Issues](https://github.com/niischool-tw/nii-business-landing/issues) 分頁
 2. 點選右上角的綠色按鈕「**New issue**」
 3. 填寫標題與內容（說明在哪個區塊、看到什麼問題、希望如何調整）
 4. 點「**Submit new issue**」送出
