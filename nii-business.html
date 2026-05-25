@@ -354,18 +354,21 @@ ul,ol{list-style:none}
 .testi-card{flex:0 0 800px;min-height:360px;display:flex;flex-direction:column;background:#fff;border-radius:var(--rxl);padding:48px;border:1.5px solid var(--s200);box-shadow:var(--sh);transform-origin:center center;transition:transform .52s cubic-bezier(.22,1,.36,1),opacity .52s ease,box-shadow .52s,border-color .52s}
 .testi-card:not(.on){transform:scale(.88);opacity:.5}
 .testi-card.on{box-shadow:var(--shg);border-color:rgba(0,209,178,.32)}
-.testi-q{font-size:20px;color:var(--s700);line-height:1.82;font-weight:400;position:relative}
+.testi-q{font-size:20px;color:var(--s700);line-height:1.82;font-weight:400;position:relative;flex:1}
 .testi-q::before{content:'\201C';font-size:72px;line-height:1;color:var(--p);font-weight:900;position:absolute;top:-16px;left:-8px;opacity:.55}
 .testi-q-inner{padding:40px 0 0 24px}
-.testi-rule{height:1px;background:var(--s200);margin:20px 0 20px;margin-top:auto}
+.testi-rule{height:1px;background:var(--s200);margin:32px 0 20px}
 .testi-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .testi-ava-row{display:flex;align-items:center;gap:10px}
 .testi-ava{width:56px;height:56px;border-radius:50%;background:var(--s100);border:2px solid var(--s200);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden}
 .testi-ava img{width:100%;height:100%;object-fit:cover;display:block}
 .testi-name{font-size:16px;font-weight:700;color:var(--s900)}
 .testi-role{font-size:14px;color:var(--s400);margin-top:1px}
-.testi-logo{background:var(--s100);border:1.5px solid var(--s200);border-radius:8px;padding:5px 12px;font-size:14px;font-weight:700;color:var(--s400);letter-spacing:.04em;white-space:nowrap;filter:grayscale(1);transition:filter .3s,color .3s,border-color .3s}
+.testi-logo{background:var(--s100);border:1.5px solid var(--s200);border-radius:8px;padding:5px 12px;font-size:14px;font-weight:700;color:var(--s400);letter-spacing:.04em;white-space:nowrap;filter:grayscale(1);transition:filter .3s,color .3s,border-color .3s,opacity .3s}
 .testi-card.on .testi-logo{filter:none;color:var(--s700);border-color:rgba(0,209,178,.4)}
+.testi-logo-img{background:transparent;border:none;padding:0;display:flex;align-items:center;justify-content:center;min-height:40px;opacity:.55}
+.testi-logo-img img{height:32px;width:auto;display:block;max-width:160px;object-fit:contain}
+.testi-card.on .testi-logo-img{opacity:1;border-color:transparent}
 .testi-controls{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:28px}
 .te-btn{width:48px;height:48px;background:transparent;border:none;padding:0;display:flex;align-items:center;justify-content:center;cursor:pointer;filter:drop-shadow(0 4px 12px rgba(0,0,0,.08));transition:transform .2s,filter .2s}
 .te-btn svg{width:48px;height:48px;display:block;overflow:visible}
@@ -703,7 +706,7 @@ body.modal-open{overflow:hidden}
           </div>
         </a>
         <div class="contact-proofs">
-          <div class="cproof"><div class="cproof-dot"></div>台積電・曉數碼・ARTOGO 已採用</div>
+          <div class="cproof"><div class="cproof-dot"></div>曉數碼・ARTOGO 已採用</div>
           <div class="cproof"><div class="cproof-dot"></div>最快 2 週完成方案規劃與開課</div>
           <div class="cproof"><div class="cproof-dot"></div>提供完整學習成效追蹤報告</div>
         </div>
@@ -865,7 +868,7 @@ body.modal-open{overflow:hidden}
     <div class="sec-head center" data-r>
       <div class="eyebrow">客戶見證</div>
       <h2 class="h2" style="margin-top:12px">他們都選擇了泥日教育</h2>
-      <p class="lead" style="margin-top:12px">來自台積電、曉數碼、ARTOGO 的真實回饋</p>
+      <p class="lead" style="margin-top:12px">來自曉數碼、ARTOGO 的真實回饋</p>
     </div>
   </div>
 
@@ -876,41 +879,28 @@ body.modal-open{overflow:hidden}
       <div class="testi-track" id="teTrack">
       <div class="testi-card" data-ti="0">
         <div class="testi-q">
-          <div class="testi-q-inner">泥日教育提供的課程能幫助同仁在職場工作中真正需要的技能，並且在真實生活之口語磨練。引入語感練功坊後，同仁在與日本客戶的視訊會議中自信大幅提升，不再需要我從旁翻譯。</div>
+          <div class="testi-q-inner">身為日商企業 HR，經常需規劃內部的日文學習課程。過去合作過傳統日文補習班，但上課方式較為單一，且會話機會少。泥日的口說課則完全不一樣，從同事獲得反饋，老師非常親切且極具耐心，會透過活潑的情境互動與遊戲設計，讓原本「害怕開口」的同事也變得更敢對話。我們選擇的客製課程方案也可以盡可能符合我們和日本總公司開會的情境需求，實用性高、能現學現用，同事們也很期待每週和日籍老師互動。</div>
         </div>
         <div class="testi-rule"></div>
         <div class="testi-foot">
           <div class="testi-ava-row">
-            <div class="testi-ava"><img src="images/avatars/sylvia.svg" alt="Sylvia Chen"></div>
-            <div><div class="testi-name">Sylvia Chen</div><div class="testi-role">人力資源管理部門</div></div>
+            <div class="testi-ava"><img src="images/avatars/milly.svg" alt="Milly Wang"></div>
+            <div><div class="testi-name">Milly Wang</div><div class="testi-role">Human Resource</div></div>
           </div>
-          <div class="testi-logo">台積電 TSMC</div>
+          <div class="testi-logo testi-logo-img"><img src="images/clients/akatsuki-taiwan.jpg" alt="曉數碼 Akatsuki Taiwan"></div>
         </div>
       </div>
       <div class="testi-card" data-ti="1">
         <div class="testi-q">
-          <div class="testi-q-inner">影片授權方案讓我們可以彈性排入內部培訓計畫，員工課後複習率遠比以前高很多。起步班的雙師模式非常有效，員工六個月內就能用日文完成基礎商務郵件往來，進步肉眼可見。</div>
+          <div class="testi-q-inner">感謝泥日以客製課程的形式協助我們準備日文會議。在沒有太多日文基礎的狀況下，以中文的文法課打基礎，搭配全日文對話訓練。特別感謝小林老師幫忙在會議前替我們進行發音集訓，讓最後在沖繩的會議非常成功，也獲得很多潛在投資人的青睞。感謝泥日老師們的幫忙！</div>
         </div>
         <div class="testi-rule"></div>
         <div class="testi-foot">
           <div class="testi-ava-row">
-            <div class="testi-ava"><img src="images/avatars/eddie.svg" alt="Eddie Lin"></div>
-            <div><div class="testi-name">Eddie Lin</div><div class="testi-role">Learning & Development</div></div>
+            <div class="testi-ava"><img src="images/avatars/walt.svg" alt="Walt Chuang"></div>
+            <div><div class="testi-name">Walt Chuang</div><div class="testi-role">Co-founder & Marketing Director</div></div>
           </div>
-          <div class="testi-logo">曉數碼</div>
-        </div>
-      </div>
-      <div class="testi-card" data-ti="2">
-        <div class="testi-q">
-          <div class="testi-q-inner">職場日文術的商用情境設計非常實用，員工上完課就能直接應用在與日本合作夥伴的溝通上，投資報酬率非常高，強力推薦給有日文培訓需求的企業 HR。</div>
-        </div>
-        <div class="testi-rule"></div>
-        <div class="testi-foot">
-          <div class="testi-ava-row">
-            <div class="testi-ava"><img src="images/avatars/christine.svg" alt="Christine Wang"></div>
-            <div><div class="testi-name">Christine Wang</div><div class="testi-role">培訓專員</div></div>
-          </div>
-          <div class="testi-logo">ARTOGO</div>
+          <div class="testi-logo testi-logo-img"><img src="images/clients/artogo.png" alt="ARTOGO"></div>
         </div>
       </div>
       </div>
@@ -920,7 +910,6 @@ body.modal-open{overflow:hidden}
   <div class="testi-controls">
     <button class="te-dot on"  data-tidx="0" onclick="teGo(0)"></button>
     <button class="te-dot"     data-tidx="1" onclick="teGo(1)"></button>
-    <button class="te-dot"     data-tidx="2" onclick="teGo(2)"></button>
   </div>
 </section>
 
